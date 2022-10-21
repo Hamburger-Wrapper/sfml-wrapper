@@ -7,7 +7,15 @@ int main()
     resolution.x = sf::VideoMode::getDesktopMode().width;
     resolution.y = sf::VideoMode::getDesktopMode().height;
     sf::RenderWindow window(sf::VideoMode(resolution.x, resolution.y), "SFML works!");
-    
+
+    // Setting the Font
+    sf::Font font;
+    if (!font.loadFromFile("./assets/fonts/JellyBomb.ttf"))
+    {
+        // error...
+    }
+
+
 
     sf::CircleShape shape(100.f);
     shape.setFillColor(sf::Color::Green);
