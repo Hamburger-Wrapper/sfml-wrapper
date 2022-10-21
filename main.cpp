@@ -2,7 +2,13 @@
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(800, 600), "SFML works!");
+    // Screen Size
+    sf::Vector2f resolution;
+    resolution.x = sf::VideoMode::getDesktopMode().width;
+    resolution.y = sf::VideoMode::getDesktopMode().height;
+    sf::RenderWindow window(sf::VideoMode(resolution.x, resolution.y), "SFML works!");
+    
+
     sf::CircleShape shape(100.f);
     shape.setFillColor(sf::Color::Green);
 
