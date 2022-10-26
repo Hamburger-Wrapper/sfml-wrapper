@@ -8,3 +8,4 @@ After morning stand up, all members will then commit code that was edited and do
 
 
 ![alt text](./assets/images/FolderArch.jpg)
+Brent Knopp
