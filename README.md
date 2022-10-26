@@ -9,3 +9,15 @@ After morning stand up, all members will then commit code that was edited and do
 
 ![alt text](./assets/images/FolderArch.jpg)
 Brent Knopp
+
+
+## Project Overview
+
+This project has 3 phases which include:
+
+1. 3 individual mini games
+2. Graphical Calculator
+3. Robot Wrapper
+
+Each phase is a stand alone program of the main project.
+
