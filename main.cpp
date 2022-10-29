@@ -1,6 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include <assets/components/animation.h>
+#include "components/animation.h"
 
 int main()
 {
@@ -31,19 +31,24 @@ int main()
     float deltaTime = 0.0f;
     sf::Clock clock;
 
+    // This can go on the next update
     sf::CircleShape shape(100.f);
     shape.setFillColor(sf::Color::Green);
 
+    // This is the main loop
     while (window.isOpen())
     {
         deltaTime = clock.restart().asSeconds();
 
+        // Interact with the window for events
         sf::Event event;
         while (window.pollEvent(event))
         {
             if (event.type == sf::Event::Closed)
                 window.close();
         }
+
+        // Testing the Animation Module
         animation.Update(0, deltaTime, true);
         // player.setTextureRect(animation.uvRect); // This is for the assest for a 3x9 sprite sheet
 
