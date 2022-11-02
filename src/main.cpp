@@ -1,7 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include "components/animation.h"
-#include "components/particleSystem.h"
+#include "../headers/animation.h"
+#include "../headers/particleSystem.h"
 
 int main()
 {
