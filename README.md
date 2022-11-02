@@ -1,6 +1,10 @@
 # Project Documentation
 
-# Maintainer: [Marty Martin](https://github.com/FancyKat), [Brent Knopp](https://github.com/bknopp71), [Nolan Meyers](https://github.com/Lil-Junko)
+## Maintainers
+
+- **[Marty Martin](https://github.com/FancyKat)**
+- **[Brent Knopp](https://github.com/bknopp71)**
+- **[Nolan Meyers](https://github.com/Lil-Junko)**
 
 ## Members Responsibility
 
