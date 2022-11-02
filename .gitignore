@@ -1,6 +1,9 @@
 # Editor Config
 .vscode/
 
+# Compiled SFML files
+homepage-dev
+
 # Prerequisites
 *.d
 
