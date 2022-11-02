@@ -1,5 +1,7 @@
 # Project Documentation
 
+# Maintainer: [Marty Martin](https://github.com/FancyKat), [Brent Knopp](https://github.com/bknopp71), [Nolan Meyers](https://github.com/Lil-Junko)
+
 ## Members Responsibility
 
 All **Push** and **Pull Request** will be done on a members personal branch.
