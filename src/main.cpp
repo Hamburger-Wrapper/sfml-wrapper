@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include <assets/components/animation.h>
+#include "../headers/animation.h"
+#include "../headers/particleSystem.h"
 
 int main()
 {
@@ -17,6 +18,9 @@ int main()
         // error...
     }
 
+    // create the particle system
+    ParticleSystem particles(1000);
+
     // Animation Module
     sf::Texture texture;
 /*  
@@ -31,24 +35,38 @@ int main()
     float deltaTime = 0.0f;
     sf::Clock clock;
 
+    // This can go on the next update
     sf::CircleShape shape(100.f);
     shape.setFillColor(sf::Color::Green);
 
+    // This is the main loop
     while (window.isOpen())
     {
         deltaTime = clock.restart().asSeconds();
 
+        // Interact with the window for events
         sf::Event event;
         while (window.pollEvent(event))
         {
             if (event.type == sf::Event::Closed)
                 window.close();
         }
+
+        // make the particle system emitter follow the mouse
+        sf::Vector2i mouse = sf::Mouse::getPosition(window);
+        particles.setEmitter(window.mapPixelToCoords(mouse));
+
+        // update it
+        sf::Time elapsed = clock.restart();
+        particles.update(elapsed);
+
+        // Testing the Animation Module
         animation.Update(0, deltaTime, true);
         // player.setTextureRect(animation.uvRect); // This is for the assest for a 3x9 sprite sheet
 
         window.clear(sf::Color(150, 150, 150));  // Background Color
         window.draw(shape);
+        window.draw(particles);
         window.display();
     }
 
