@@ -59,7 +59,7 @@ title="HomePage ">
 
 This project has 3 phases which include:
 
-1. 3 individual mini games
+1. 4 individual mini games
 2. Graphical Calculator
 3. Robot Wrapper
 
