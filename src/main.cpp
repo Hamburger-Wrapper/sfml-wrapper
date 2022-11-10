@@ -1,3 +1,15 @@
+/**
+ * @file main.cpp
+ * @author Brent Knopp
+ * @brief  This program testing class buton
+ * @version 0.1
+ * @date 2022-10-16
+ * 
+ * @copyright Copyright (c) 2022
+ * @aknolegment https://code.markrichards.ninja/sfml/how-to-create-simple-buttons-for-your-sfml-game
+ * 
+ * 
+ */
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <string>
@@ -325,6 +337,13 @@ int main()
         quitGame3.setColorTextHover(sf::Color::Red);
 
         Button cashDisplay("CASH", {400, 400}, {600, 200}, sf::Color::Red);
+        window.clear();
+        window.draw(yes);
+        window.draw(no);
+        window.draw(playGame1);
+        window.draw(playGame2);
+        window.draw(playGame3);
+        window.draw(playGame4);
 
         // run the program as long as the window is open
         while (windowGame3.isOpen())
@@ -343,7 +362,43 @@ int main()
                 slot.update(eventGame3, windowGame3);
                 cashDisplay.update(eventGame3, windowGame3);
             }
+        // bool switch triggers
+        if(game1On)
+        {
+            window.draw(buffer1);
+        }
+       
+        if(game2On)
+        window.draw(buffer2);
+        if(game3On)
+        window.draw(buffer3);
+        if(game4On)
+        window.draw(buffer4);
 
+        window.display();
+
+        if(game1On)
+        {
+                sf::Window windowGame1(sf::VideoMode(800, 600), "Game 1");
+
+                // run the program as long as the window is open
+                while (windowGame1.isOpen())
+                {
+                // check all the window's events that were triggered since the last iteration of the loop
+                sf::Event eventGame1;
+                while (windowGame1.pollEvent(event))
+                {
+                    // "close requested" event: we close the window
+                if (eventGame1.type == sf::Event::Closed)
+                    windowGame1.close();
+                }
+                }
+        }
+    }
+
+        if(game1On)
+    {
+        sf::Window window(sf::VideoMode(800, 600), "game 1");
             windowGame3.clear();
             windowGame3.draw(display1);
             windowGame3.draw(display2);
@@ -356,4 +411,6 @@ int main()
     }
 
     return 0;
+
+
 }
