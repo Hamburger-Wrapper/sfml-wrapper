@@ -11,7 +11,7 @@ int main()
         game3On = false,
         game4On = false;
 
-    sf::RenderWindow window(sf::VideoMode(900, 500), "MyButton!");
+    sf::RenderWindow window(sf::VideoMode(900, 500), "start screen");
 
     if (!game1On)
     {
@@ -61,7 +61,7 @@ int main()
     // error.setColorTextHover(sf::Color::Red);
     // error.setColorTextNormal(sf::Color::Cyan);
 
-    while (window.isOpen())
+    while (window.isOpen() && !game1On && !game2On && !game3On && !game4On)
     {
         sf::Event event;
         while (window.pollEvent(event))
@@ -106,6 +106,8 @@ int main()
             window.draw(buffer4);
 
         window.display();
+     
+    }
 
         if (game1On)
         {
@@ -116,7 +118,7 @@ int main()
             {
                 // check all the window's events that were triggered since the last iteration of the loop
                 sf::Event eventGame1;
-                while (windowGame1.pollEvent(event))
+                while (windowGame1.pollEvent(eventGame1))
                 {
                     // "close requested" event: we close the window
                     if (eventGame1.type == sf::Event::Closed)
@@ -124,12 +126,30 @@ int main()
                 }
             }
         }
-    }
 
     if (game1On)
     {
         sf::Window window(sf::VideoMode(800, 600), "game 1");
     }
 
+        // game 2
+       if(game2On)
+       {
+        window.close();
+        sf::Window windowGame2(sf::VideoMode(800, 600), "Game 2");
+
+                // run the program as long as the window is open
+                while (windowGame2.isOpen())
+                {
+                // check all the window's events that were triggered since the last iteration of the loop
+                sf::Event eventGame2;
+                while (windowGame2.pollEvent(eventGame2))
+                {
+                    // "close requested" event: we close the window
+                if (eventGame2.type == sf::Event::Closed)
+                    windowGame2.close();
+                }
+                }
+        }
     return 0;
 }
