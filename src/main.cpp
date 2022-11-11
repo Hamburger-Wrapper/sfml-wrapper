@@ -25,12 +25,21 @@ int main()
          game3On = false,
          game4On = false;
 
+<<<<<<< HEAD
     sf::RenderWindow window1(sf::VideoMode(900, 500), "start screen");
 
     if (!game1On)
     {
         sf::Window window(sf::VideoMode(800, 600), "game 1");
     }
+=======
+    sf::RenderWindow window(sf::VideoMode(900, 500), "start screen");
+
+    //sf::Window windowGame1(sf::VideoMode(800, 600), "Game 1");
+    //sf::Window windowGame2(sf::VideoMode(800, 600), "Game 2");
+    //sf::Window windowGame3(sf::VideoMode(800, 600), "Game 3");
+    //sf::Window windowGame4(sf::VideoMode(800, 600), "Game 4");
+>>>>>>> 733f07c (window opens when game is selected, completed starter for Nolan)
 
     // buffers at the terminal edges
     Button buffer1("1", {25, 250}, {50, 500}, sf::Color::Red);
@@ -68,6 +77,7 @@ int main()
     // no.setColorTextHover(sf::Color::Cyan);
     // no.setColorTextNormal(sf::Color::Green);
 
+<<<<<<< HEAD
     // error.setText("error");
     // error.setPosition({150, 610});
     // error.setSize({300, 400});
@@ -76,6 +86,9 @@ int main()
     // error.setColorTextNormal(sf::Color::Cyan);
 
     while (window1.isOpen() && !game1On && !game2On && !game3On && !game4On)
+=======
+    while (window.isOpen() && !game1On && !game2On && !game3On && !game4On)
+>>>>>>> 733f07c (window opens when game is selected, completed starter for Nolan)
     {
         sf::Event event;
         while (window1.pollEvent(event))
@@ -376,17 +389,21 @@ int main()
         window.draw(buffer4);
 
         window.display();
+     
+    }
 
-        if(game1On)
-        {
-                sf::Window windowGame1(sf::VideoMode(800, 600), "Game 1");
+    // game 1
+       if(game1On)
+       {
+        window.close();
+        sf::Window windowGame1(sf::VideoMode(800, 600), "Game 1");
 
                 // run the program as long as the window is open
                 while (windowGame1.isOpen())
                 {
                 // check all the window's events that were triggered since the last iteration of the loop
                 sf::Event eventGame1;
-                while (windowGame1.pollEvent(event))
+                while (windowGame1.pollEvent(eventGame1))
                 {
                     // "close requested" event: we close the window
                 if (eventGame1.type == sf::Event::Closed)
@@ -394,8 +411,8 @@ int main()
                 }
                 }
         }
-    }
 
+<<<<<<< HEAD
         if(game1On)
     {
         sf::Window window(sf::VideoMode(800, 600), "game 1");
@@ -409,7 +426,28 @@ int main()
             windowGame3.display();
         }
     }
+=======
+>>>>>>> 733f07c (window opens when game is selected, completed starter for Nolan)
 
+        // game 2
+       if(game2On)
+       {
+        window.close();
+        sf::Window windowGame2(sf::VideoMode(800, 600), "Game 2");
+
+                // run the program as long as the window is open
+                while (windowGame2.isOpen())
+                {
+                // check all the window's events that were triggered since the last iteration of the loop
+                sf::Event eventGame2;
+                while (windowGame2.pollEvent(eventGame2))
+                {
+                    // "close requested" event: we close the window
+                if (eventGame2.type == sf::Event::Closed)
+                    windowGame2.close();
+                }
+                }
+        }
     return 0;
 
 
