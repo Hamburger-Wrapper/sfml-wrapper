@@ -1,15 +1,4 @@
-/**
- * @file main.cpp
- * @author Brent Knopp
- * @brief  This program testing class buton
- * @version 0.1
- * @date 2022-10-16
- * 
- * @copyright Copyright (c) 2022
- * @aknolegment https://code.markrichards.ninja/sfml/how-to-create-simple-buttons-for-your-sfml-game
- * 
- * 
- */
+
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <string>
