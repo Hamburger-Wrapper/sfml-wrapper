@@ -1,12 +1,12 @@
-#ifndef BUTTON_H
-#define BUTTON_H
+#ifndef BUTTONCIRCLE_H
+#define BUTTONCIRCLE_H
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
 
 enum state {normal, hovered, clicked};
 
-class Button: public sf::Drawable
+class CircleButton: public sf::Drawable
 {
 public:
     //Default constructor that loads texture from file “button.png” and font from “college.ttf” file.
@@ -14,11 +14,10 @@ public:
     //set color to White, position to {300,100}, set state to normal, and scale to 100%
     //set font for the text, set the size of the text to the half of Button size, set the origin to the middle of the text 
     //and set position at the middle of the button, assign “Push me!” as a string of the button
-    Button();
+    CircleButton();
     //Constructor that sets button label to s, button position to the position,  button size to size (given in pixels), and button color to color.
-    Button(std::string s, sf::Vector2f position, sf::Vector2f size, sf::Color color);
-    //Destructor  
-    ~Button(){};
+    CircleButton(std::string s, sf::Vector2f position, sf::Vector2f size, sf::Color color);
+    ~CircleButton(){};
     //change button position to position (what else needs to be changed?)
     void setPosition(sf::Vector2f position);
     //change button size to size (what else needs to be changed?)
@@ -27,23 +26,19 @@ public:
     void setColor(sf::Color btnColor);
     //change button label to s (what else needs to be changed?)
     void setText(std::string s);
-    //sets the color of the text on the button
     void setColorTextNormal(sf::Color textNormalColor){mTextNormal = textNormalColor;};
-    //sets the color of the text when the mouse is on the button
     void setColorTextHover(sf::Color textHoverColor){mTextHover = textHoverColor;};
-    //gets button position on the display screen
+    void setFontSize(unsigned int);
+
     sf::Vector2f getPosition(){return mPosition;};
-    //gets the global bounds of a button
     sf::Vector2f getDimensions(){return sf::Vector2f(mButton.getGlobalBounds().width, mButton.getGlobalBounds().height);};
-    //gets the state of the button
     sf::Uint32 getState(){return mBtnState;};
+
     //This function update the button state and/or look
-    bool update(sf::Event& e, sf::RenderWindow& window);
-    //draws the button on the display screeen
+    void update(sf::Event& e, sf::RenderWindow& window);
     virtual void draw(sf::RenderTarget& target,sf::RenderStates states) const;
 
 private:
-    //button characteristics
     sf::Sprite mButton;
     sf::Texture mTexture;
     sf::Color mButtonColor;
@@ -55,6 +50,7 @@ private:
     sf::Font mFont;
     sf::Color mTextNormal;
     sf::Color mTextHover;
+
 };
 
 #endif
