@@ -40,7 +40,7 @@ int main()
     Button playGame2("Rock Paper Sicssors",{250,363}, {375, 75}, sf::Color::Red);
     playGame2.setColorTextHover(sf::Color::Cyan);
 
-    Button playGame3("Tic-Tack-Toe",{650,238}, {375, 75}, sf::Color::Red);
+    Button playGame3("Slot Machine",{650,238}, {375, 75}, sf::Color::Red);
     playGame3.setColorTextHover(sf::Color::Cyan);
 
     Button playGame4("Go Marty",{650,363}, {375, 75}, sf::Color::Red);
@@ -95,6 +95,7 @@ int main()
         window1.draw(playGame2);
         window1.draw(playGame3);
         window1.draw(playGame4);
+<<<<<<< HEAD
 
         // bool switch triggers
         if (game1On)
@@ -108,7 +109,10 @@ int main()
         window1.draw(buffer3);
         if(game4On)
         window1.draw(buffer4);
+=======
+>>>>>>> e365954 (base slot machine, game 3)
         window1.display();
+
     }
 
     // game 1
@@ -331,6 +335,7 @@ int main()
             }
         }
 
+<<<<<<< HEAD
     if (game1On)
     {
         sf::Window window(sf::VideoMode(800, 600), "game 1");
@@ -338,21 +343,51 @@ int main()
 
         // game 2
        if(game2On)
+=======
+// here Marty ****************************
+        // game 3
+       if(game3On)
+>>>>>>> e365954 (base slot machine, game 3)
        {
-    //    window1.close();
-        sf::Window windowGame2(sf::VideoMode(800, 600), "Game 2");
+        window1.close();
+        sf::RenderWindow windowGame3(sf::VideoMode(800, 600), "Game 2");
 
+        Button display1("#",{200, 150}, {185, 185}, sf::Color::Blue);
+        Button display2("#",{400, 150}, {185, 185}, sf::Color::Blue);
+        Button display3("#",{600, 150}, {185, 185}, sf::Color::Blue);
+        Button slot("",{750, 300}, {50, 500}, sf::Color::Yellow);
+        Button quitGame3("Quit",{50, 550}, {50, 50}, sf::Color::White);
+        quitGame3.setColorTextHover(sf::Color::Red);
+
+        Button cashDisplay ("CASH",{400, 400}, {600, 200}, sf::Color::Red);
+    
                 // run the program as long as the window is open
-                while (windowGame2.isOpen())
+                while (windowGame3.isOpen())
                 {
                 // check all the window's events that were triggered since the last iteration of the loop
-                sf::Event eventGame2;
-                while (windowGame2.pollEvent(eventGame2))
+                sf::Event eventGame3;
+                while (windowGame3.pollEvent(eventGame3))
                 {
                     // "close requested" event: we close the window
-                if (eventGame2.type == sf::Event::Closed)
-                    windowGame2.close();
+                if (eventGame3.type == sf::Event::Closed || quitGame3.update(eventGame3, windowGame3))
+                    windowGame3.close();
+                
+            
+                display1.update(eventGame3, windowGame3);
+                display2.update(eventGame3, windowGame3);
+                display3.update(eventGame3, windowGame3);
+                slot.update(eventGame3, windowGame3);
+                cashDisplay.update(eventGame3, windowGame3);
                 }
+
+                windowGame3.clear();
+                windowGame3.draw(display1); 
+                windowGame3.draw(display2);
+                windowGame3.draw(display3);
+                windowGame3.draw(slot);
+                windowGame3.draw(cashDisplay);
+                windowGame3.draw(quitGame3);
+                windowGame3.display();
                 }
         }
 
