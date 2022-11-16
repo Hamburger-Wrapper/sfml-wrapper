@@ -13,57 +13,24 @@ int RPS(int user, int computer);
 
 int main()
 {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
-    
->>>>>>> 0865dab (game 1 working)
-=======
-
->>>>>>> 4ba6e7a (Refactored, added game 2, error fixed)
-=======
-    
->>>>>>> ff8f850 (Updated conflict errors)
     // switches to turn on games
     bool game1On = false,
         game2On = false,
         game3On = false,
         game4On = false;
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 5afaf71 (window opens when game is selected, completed starter for Nolan)
-=======
->>>>>>> 14dd41e (game 1 working)
     sf::RenderWindow window1(sf::VideoMode(900, 500), "start screen");
 
-<<<<<<< HEAD
     if (!game1On)
     {
         sf::Window window(sf::VideoMode(800, 600), "game 1");
     }
-=======
-    sf::RenderWindow window(sf::VideoMode(900, 500), "start screen");
-=======
     sf::RenderWindow window1(sf::VideoMode(900, 500), "start screen");
->>>>>>> 0865dab (game 1 working)
 
-    //sf::Window windowGame1(sf::VideoMode(800, 600), "Game 1");
-    //sf::Window windowGame2(sf::VideoMode(800, 600), "Game 2");
-    //sf::Window windowGame3(sf::VideoMode(800, 600), "Game 3");
-    //sf::Window windowGame4(sf::VideoMode(800, 600), "Game 4");
->>>>>>> 733f07c (window opens when game is selected, completed starter for Nolan)
-=======
+    
     // sf::Window windowGame1(sf::VideoMode(800, 600), "Game 1");
     // sf::Window windowGame2(sf::VideoMode(800, 600), "Game 2");
     // sf::Window windowGame3(sf::VideoMode(800, 600), "Game 3");
     // sf::Window windowGame4(sf::VideoMode(800, 600), "Game 4");
->>>>>>> 4ba6e7a (Refactored, added game 2, error fixed)
 
     // buffers at the terminal edges
     Button buffer1("1", {25, 250}, {50, 500}, sf::Color::Red);
@@ -73,13 +40,7 @@ int main()
     // Button buffer5("", {25,475}, {1000,50}, sf::Color::Black);
     // Button buffer6("", {25,710}, {1000,50}, sf::Color::White);
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     Button yes("Select A Game", {450, 100}, {400, 100}, sf::Color::Red);
-=======
-    Button yes("Select A Game",{450,100}, {400, 100}, sf::Color::Red);
->>>>>>> ff8f850 (Updated conflict errors)
     yes.setColorTextHover(sf::Color::Cyan);
 
 
@@ -90,27 +51,14 @@ int main()
     Button playGame2("Rock Paper Sicssors",{250,363}, {375, 75}, sf::Color::Red);
     playGame2.setColorTextHover(sf::Color::Cyan);
 
-<<<<<<< HEAD
-    Button playGame3("Slot Machine", {650, 238}, {375, 75}, sf::Color::Red);
-<<<<<<< HEAD
-=======
     Button playGame3("Slot Machine",{650,238}, {375, 75}, sf::Color::Red);
->>>>>>> ff8f850 (Updated conflict errors)
     playGame3.setColorTextHover(sf::Color::Cyan);
 
     Button playGame4("Go Marty",{650,363}, {375, 75}, sf::Color::Red);
     playGame4.setColorTextHover(sf::Color::Cyan);
 
     //Button error;
-
-<<<<<<< HEAD
-    // yes.setFontSize(20);
-    // yes.setColorTextHover(sf::Color::Cyan);
-=======
-    Button yes("Select A Game",{450,100}, {400, 100}, sf::Color::Red);
-=======
     Button yes("Select A Game", {450, 100}, {400, 100}, sf::Color::Red);
->>>>>>> 4ba6e7a (Refactored, added game 2, error fixed)
     yes.setColorTextHover(sf::Color::Cyan);
 
     // Button no;
@@ -121,69 +69,14 @@ int main()
     playGame2.setColorTextHover(sf::Color::Cyan);
 
     Button playGame3("Tic-Tack-Toe", {650, 238}, {375, 75}, sf::Color::Red);
-=======
->>>>>>> 76114c6 (base slot machine, game 3)
     playGame3.setColorTextHover(sf::Color::Cyan);
 
     Button playGame4("Go Marty", {650, 363}, {375, 75}, sf::Color::Red);
     playGame4.setColorTextHover(sf::Color::Cyan);
 
-    // Button error;
 
-<<<<<<< HEAD
-=======
->>>>>>> ff8f850 (Updated conflict errors)
-    //yes.setFontSize(20);
-    //yes.setColorTextHover(sf::Color::Cyan);
-    
-   // no.setText("No");
-   // no.setPosition({350, 610});
-   // no.setSize({100, 100});
-   // no.setColor(sf::Color::Blue);
-   // no.setColorTextHover(sf::Color::Cyan);
-   // no.setColorTextNormal(sf::Color::Green);
-<<<<<<< HEAD
->>>>>>> 0865dab (game 1 working)
-=======
-    // yes.setFontSize(20);
-    // yes.setColorTextHover(sf::Color::Cyan);
->>>>>>> 4ba6e7a (Refactored, added game 2, error fixed)
-
-    // no.setText("No");
-    // no.setPosition({350, 610});
-    // no.setSize({100, 100});
-    // no.setColor(sf::Color::Blue);
-    // no.setColorTextHover(sf::Color::Cyan);
-    // no.setColorTextNormal(sf::Color::Green);
-=======
->>>>>>> ff8f850 (Updated conflict errors)
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 4ba6e7a (Refactored, added game 2, error fixed)
-    // error.setText("error");
-    // error.setPosition({150, 610});
-    // error.setSize({300, 400});
-    // error.setColor(sf::Color::White);
-    // error.setColorTextHover(sf::Color::Red);
-    // error.setColorTextNormal(sf::Color::Cyan);
 
     while (window1.isOpen() && !game1On && !game2On && !game3On && !game4On)
-<<<<<<< HEAD
-=======
-    while (window.isOpen() && !game1On && !game2On && !game3On && !game4On)
-<<<<<<< HEAD
->>>>>>> 733f07c (window opens when game is selected, completed starter for Nolan)
-=======
-    while (window1.isOpen() && !game1On && !game2On && !game3On && !game4On)
->>>>>>> 0865dab (game 1 working)
-=======
->>>>>>> 857d9b1 (window opens when game is selected, completed starter for Nolan)
->>>>>>> 5afaf71 (window opens when game is selected, completed starter for Nolan)
-=======
->>>>>>> 14dd41e (game 1 working)
     {
         sf::Event event;
         while (window1.pollEvent(event))
@@ -191,76 +84,28 @@ int main()
             if (event.type == sf::Event::Closed)
                 window1.close();
             yes.update(event, window1);
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-            // no.update(event, window);
-            // error.update(event, window);
-            if (playGame1.update(event, window1))
-=======
-            //no.update(event, window);
-            //error.update(event, window);
-            if(playGame1.update(event, window1))
->>>>>>> ff8f850 (Updated conflict errors)
-            {
-                game1On = true;
-            }
-                
-            if(playGame2.update(event, window1))
-                game2On = true;
-            if(playGame3.update(event, window1))
-                game3On = true;
-<<<<<<< HEAD
-            if (playGame4.update(event, window1))
-=======
-            //no.update(event, window);
-            //error.update(event, window);
-            if(playGame1.update(event, window1))
-=======
-            // no.update(event, window);
-            // error.update(event, window);
-            if (playGame1.update(event, window1))
->>>>>>> 4ba6e7a (Refactored, added game 2, error fixed)
-            {
-                game1On = true;
-            }
 
+            if (playGame1.update(event, window1))
+            {
+                game1On = true;
+            }
             if (playGame2.update(event, window1))
                 game2On = true;
             if (playGame3.update(event, window1))
                 game3On = true;
-<<<<<<< HEAD
-            if(playGame4.update(event, window1))
->>>>>>> 0865dab (game 1 working)
-=======
+
             if (playGame4.update(event, window1))
->>>>>>> 4ba6e7a (Refactored, added game 2, error fixed)
-=======
+
             if(playGame4.update(event, window1))
->>>>>>> ff8f850 (Updated conflict errors)
                 game4On = true;
         }
 
         window1.clear();
         window1.draw(yes);
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-        // window.draw(no);
-=======
-        //window.draw(no);
->>>>>>> 0865dab (game 1 working)
-=======
-        // window.draw(no);
->>>>>>> 4ba6e7a (Refactored, added game 2, error fixed)
-=======
-        //window.draw(no);
->>>>>>> ff8f850 (Updated conflict errors)
         window1.draw(playGame1);
         window1.draw(playGame2);
         window1.draw(playGame3);
         window1.draw(playGame4);
-<<<<<<< HEAD
         window1.display();
     }
 
@@ -500,8 +345,6 @@ int main()
         window.draw(playGame2);
         window.draw(playGame3);
         window.draw(playGame4);
-=======
->>>>>>> 0865dab (game 1 working)
 
         // run the program as long as the window is open
         while (windowGame3.isOpen())
@@ -758,9 +601,6 @@ int main()
             }
         }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
         if(game1On)
     {
         sf::Window window(sf::VideoMode(800, 600), "game 1");
