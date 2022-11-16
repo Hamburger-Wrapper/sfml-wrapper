@@ -4,7 +4,7 @@
 #include <string>
 #include <cstdlib>
 #include <ctime>
-#include "../headers/button.h"
+#include "include/button.h"
 //#include "../headers/buttonCircle.h"
 
 void game1(); // gotta put these in a header
@@ -21,20 +21,15 @@ int main()
          game3On = false,
          game4On = false;
 
-    sf::RenderWindow window1(sf::VideoMode(900, 500), "start screen");
-
-    // sf::Window windowGame1(sf::VideoMode(800, 600), "Game 1");
-    // sf::Window windowGame2(sf::VideoMode(800, 600), "Game 2");
-    // sf::Window windowGame3(sf::VideoMode(800, 600), "Game 3");
-    // sf::Window windowGame4(sf::VideoMode(800, 600), "Game 4");
+    sf::RenderWindow window(sf::VideoMode(900, 500), "start screen");
+    window.setVerticalSyncEnabled(true);
 
     // buffers at the terminal edges
     Button buffer1("1", {25, 250}, {50, 500}, sf::Color::Red);
     Button buffer2("2", {875, 250}, {50, 500}, sf::Color::Red);
     Button buffer3("3", {450, 25}, {800, 50}, sf::Color::Red);
     Button buffer4("4", {450, 475}, {800, 50}, sf::Color::Red);
-    // Button buffer5("", {25,475}, {1000,50}, sf::Color::Black);
-    // Button buffer6("", {25,710}, {1000,50}, sf::Color::White);
+
 
     Button yes("Select A Game", {450, 100}, {400, 100}, sf::Color::Red);
     yes.setColorTextHover(sf::Color::Cyan);
@@ -52,83 +47,64 @@ int main()
     Button playGame4("Go Marty", {650, 363}, {375, 75}, sf::Color::Red);
     playGame4.setColorTextHover(sf::Color::Cyan);
 
-    // Button error;
-
-    // yes.setFontSize(20);
-    // yes.setColorTextHover(sf::Color::Cyan);
-
-    // no.setText("No");
-    // no.setPosition({350, 610});
-    // no.setSize({100, 100});
-    // no.setColor(sf::Color::Blue);
-    // no.setColorTextHover(sf::Color::Cyan);
-    // no.setColorTextNormal(sf::Color::Green);
-
-    // error.setText("error");
-    // error.setPosition({150, 610});
-    // error.setSize({300, 400});
-    // error.setColor(sf::Color::White);
-    // error.setColorTextHover(sf::Color::Red);
-    // error.setColorTextNormal(sf::Color::Cyan);
-
-    while (window1.isOpen() && !game1On && !game2On && !game3On && !game4On)
+    while (window.isOpen() && !game1On && !game2On && !game3On && !game4On)
     {
         sf::Event event;
-        while (window1.pollEvent(event))
+        while (window.pollEvent(event))
         {
             if (event.type == sf::Event::Closed)
-                window1.close();
-            yes.update(event, window1);
+                window.close();
+            yes.update(event, window);
             // no.update(event, window);
             // error.update(event, window);
-            if (playGame1.update(event, window1))
+            if (playGame1.update(event, window))
             {
                 game1On = true;
             }
 
-            if (playGame2.update(event, window1))
+            if (playGame2.update(event, window))
                 game2On = true;
-            if (playGame3.update(event, window1))
+            if (playGame3.update(event, window))
                 game3On = true;
-            if (playGame4.update(event, window1))
+            if (playGame4.update(event, window))
                 game4On = true;
         }
 
-        window1.clear();
-        window1.draw(yes);
+        window.clear();
+        window.draw(yes);
         // window.draw(no);
-        window1.draw(playGame1);
-        window1.draw(playGame2);
-        window1.draw(playGame3);
-        window1.draw(playGame4);
+        window.draw(playGame1);
+        window.draw(playGame2);
+        window.draw(playGame3);
+        window.draw(playGame4);
 
         // bool switch triggers
         if (game1On)
         {
-            window1.draw(buffer1);
+            window.draw(buffer1);
         }
 
         if (game2On)
-            window1.draw(buffer2);
+            window.draw(buffer2);
         if (game3On)
-            window1.draw(buffer3);
+            window.draw(buffer3);
         if (game4On)
-            window1.draw(buffer4);
-        window1.display();
+            window.draw(buffer4);
+        window.display();
 
     }
 
     // game 1
     if (game1On)
     {
-        window1.close();
+        window.close();
         game1();
     }
 
     // game 2
     if (game2On)
     {
-        window1.close();
+        window.close();
         game2();
     }
 
@@ -149,20 +125,13 @@ void game1()
 
     sf::RenderWindow windowGame(sf::VideoMode(800, 600), "Game 1");
 
-    // start button
-    //don't need it, much better without it
-    //Button start("start", {600, 250}, {150, 100}, sf::Color::Green);
-
     Button quit("quit", {170, 210}, {200, 75}, sf::Color::Green);
     Button newGame("new game", {170, 310}, {200, 75}, sf::Color::Green);
     newGame.setColorTextNormal(sf::Color::White);
     newGame.setColorTextHover(sf::Color::Red);
     quit.setColorTextNormal(sf::Color::White);
     quit.setColorTextHover(sf::Color::Red);
-    // start button
-    // start.setColorTextNormal(sf::Color::White);
-    // start.setColorTextHover(sf::Color::Red);
-    // ten number buttons
+
     Button one("1", {250, 400}, {50, 50}, sf::Color::Blue);
     Button two("2", {325, 400}, {50, 50}, sf::Color::Blue);
     Button three("3", {400, 400}, {50, 50}, sf::Color::Blue);
@@ -186,13 +155,7 @@ void game1()
             // "close requested" event: we close the window
             if (eventGame1.type == sf::Event::Closed)
                 windowGame.close();
-            // start button is pushed
 
-            // if (start.update(eventGame1, windowGame) && selectNumber)
-            // {
-            //     start.setColorTextNormal(sf::Color::Red);
-            //     generateNumber = true;
-            // }
 
             pickNumber.update(eventGame1, windowGame);
             if (newGame.update(eventGame1, windowGame))
@@ -303,7 +266,6 @@ void game1()
         windowGame.draw(ten);
         windowGame.draw(title);
         windowGame.draw(pickNumber);
-        //windowGame.draw(start);
         windowGame.draw(quit);
         windowGame.draw(newGame);
         windowGame.display();
@@ -324,7 +286,7 @@ void game1()
             {
                 std::string s = std::to_string(magicNumber);
                 pickNumber.setText(s); //displays the hidden number
-                title.setText("   YOU WIN, GET PAID");
+                title.setText("YOU WIN, GET PAID");
             }
 
             // display losing pick
@@ -332,12 +294,11 @@ void game1()
             {
                 std::string s = std::to_string(magicNumber);
                 pickNumber.setText(s);
-                title.setText("   TRY AGAIN SUCKER");
+                title.setText("TRY AGAIN SUCKER");
             }
 
             if (restart == true)
             {
-                // generateNumber = false;
                 selectNumber = false;
                 win = false;
                 lose = false;
@@ -354,7 +315,6 @@ void game1()
                 eight.setColorTextNormal(sf::Color::Green);
                 nine.setColorTextNormal(sf::Color::Green);
                 ten.setColorTextNormal(sf::Color::Green);
-                //start.setColorTextNormal(sf::Color::White);
                 newGame.setColorTextNormal(sf::Color::White);
                 title.setText("Guess my number 1 to 10");
                 pickNumber.setText("?");

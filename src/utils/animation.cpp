@@ -1,4 +1,4 @@
-#include "../headers/animation.h"
+#include "../include/animation.h"
 
 Animation::Animation(sf::Texture* texture, sf::Vector2u imageCount, float switchTime)
 {
