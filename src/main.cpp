@@ -4,7 +4,7 @@
 #include <string>
 #include <cstdlib>
 #include <ctime>
-#include "../headers/button.h"
+#include "include/button.h"
 //#include "../headers/buttonCircle.h"
 
 void game1(); // gotta put these in a header

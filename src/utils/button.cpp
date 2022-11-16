@@ -1,5 +1,5 @@
 
-#include "../headers/button.h"
+#include "../include/button.h"
 
 /// @brief Button - button constructor for the button class
 /// @param s - text displayed on the button
