@@ -1,22 +1,43 @@
-install:
-	sudo apt-get install libsfml-dev
+CXX      = clang++
+CXXFLAGS = -Weverything -Wno-c++98-compat -Wno-c++11-extensions -Wno-padded -Wno-conversion -Wno-global-constructors -Wno-exit-time-destructors
+EXEC     = Casino
+LIB      = -lsfml-window -lsfml-graphics -lsfml-system
+SRC      = $(shell find src -type f -name '*.cpp')
+OBJ      = $(patsubst src/%.cpp, obj/%.o, $(SRC))
+DEP      = $(OBJ:.o=.d)
 
-all:
-	g++ -c ./src/*.cpp
-	g++ -std=c++11 *.o -o dev -lsfml-graphics -lsfml-window -lsfml-system
 
-homepage-dev:
-	g++ -c ./src/*.cpp ./pages/homepage.cpp
-	g++ -std=c++11 *.o -o dev -lsfml-graphics -lsfml-window -lsfml-system
+all: print_compilation $(EXEC) open
 
-menu-dev:
-	g++ -c ./src/*.cpp ./pages/menu.cpp
-	g++ -std=c++11 *.o -o dev -lsfml-graphics -lsfml-window -lsfml-system
 
-game-dev:
-	g++ -c ./src/*.cpp ./pages/game.cpp
-	g++ -std=c++11 *.o -o dev -lsfml-graphics -lsfml-window -lsfml-system
+-include $(DEP)
+
+
+print_compilation:
+	@printf '\n→ compilation...\n'
+
+
+$(EXEC): $(OBJ)
+	$(CXX) $^ -o $(EXEC) $(LIB)
+
+
+obj/%.o : src/%.cpp
+	$(CXX) $(CXXFLAGS) -MMD -MP -c $< -o $@
+
+
+open:
+	@printf '\n→ launch $(EXEC)...\n'
+	@./$(EXEC)
+
 
 clean:
-	rm dev
-	rm *.o
+	@printf '\n→ clean...\n'
+	rm -f $(OBJ)
+	rm -f $(DEP)
+	rm -f $(EXEC)
+
+
+cm: clean all 
+
+
+.PHONY: all print_compilation open clean cm

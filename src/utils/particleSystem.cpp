@@ -1,4 +1,4 @@
-#include "../headers/particleSystem.h"
+#include "../include/particleSystem.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <cmath>
