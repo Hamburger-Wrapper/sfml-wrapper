@@ -46,7 +46,7 @@ int main()
     Button playGame2("Rock Paper Sicssors", {250, 363}, {375, 75}, sf::Color::Red);
     playGame2.setColorTextHover(sf::Color::Cyan);
 
-    Button playGame3("Tic-Tack-Toe", {650, 238}, {375, 75}, sf::Color::Red);
+    Button playGame3("Slot Machine",{650,238}, {375, 75}, sf::Color::Red);
     playGame3.setColorTextHover(sf::Color::Cyan);
 
     Button playGame4("Go Marty", {650, 363}, {375, 75}, sf::Color::Red);
@@ -115,6 +115,7 @@ int main()
         if (game4On)
             window1.draw(buffer4);
         window1.display();
+
     }
 
     // game 1
