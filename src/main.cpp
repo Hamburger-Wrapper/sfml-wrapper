@@ -5,111 +5,59 @@
 #include <cstdlib>
 #include <ctime>
 #include "include/button.h"
+#include "include/menu.h"
+
 //#include "../headers/buttonCircle.h"
 
-void game1(); // gotta put these in a header
+   // gotta put these in a header
+void game1(); 
 void game2();
 int botChoice();
 int RPS(int user, int computer);
 
 int main()
 {
-
-    // switches to turn on games
+    // switches to turn on each game application
     bool game1On = false,
          game2On = false,
          game3On = false,
          game4On = false;
 
-    sf::RenderWindow window(sf::VideoMode(900, 500), "start screen");
+    // main menu display
+    sf::RenderWindow window(sf::VideoMode(900, 500), "main game menu");
     window.setVerticalSyncEnabled(true);
 
-    // buffers at the terminal edges
-    Button buffer1("1", {25, 250}, {50, 500}, sf::Color::Red);
-    Button buffer2("2", {875, 250}, {50, 500}, sf::Color::Red);
-    Button buffer3("3", {450, 25}, {800, 50}, sf::Color::Red);
-    Button buffer4("4", {450, 475}, {800, 50}, sf::Color::Red);
+    // handle main game menu
+    mainMenu(window, game1On, game2On, game3On, game4On);
 
-
-    Button yes("Select A Game", {450, 100}, {400, 100}, sf::Color::Red);
-    yes.setColorTextHover(sf::Color::Cyan);
-
-    // Button no;
-    Button playGame1("Guess My Number", {250, 238}, {375, 75}, sf::Color::Red);
-    playGame1.setColorTextHover(sf::Color::Cyan);
-
-    Button playGame2("Rock Paper Sicssors", {250, 363}, {375, 75}, sf::Color::Red);
-    playGame2.setColorTextHover(sf::Color::Cyan);
-
-    Button playGame3("Slot Machine",{650,238}, {375, 75}, sf::Color::Red);
-    playGame3.setColorTextHover(sf::Color::Cyan);
-
-    Button playGame4("Go Marty", {650, 363}, {375, 75}, sf::Color::Red);
-    playGame4.setColorTextHover(sf::Color::Cyan);
-
-    while (window.isOpen() && !game1On && !game2On && !game3On && !game4On)
-    {
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-            yes.update(event, window);
-            // no.update(event, window);
-            // error.update(event, window);
-            if (playGame1.update(event, window))
-            {
-                game1On = true;
-            }
-
-            if (playGame2.update(event, window))
-                game2On = true;
-            if (playGame3.update(event, window))
-                game3On = true;
-            if (playGame4.update(event, window))
-                game4On = true;
-        }
-
-        window.clear();
-        window.draw(yes);
-        // window.draw(no);
-        window.draw(playGame1);
-        window.draw(playGame2);
-        window.draw(playGame3);
-        window.draw(playGame4);
-
-        // bool switch triggers
-        if (game1On)
-        {
-            window.draw(buffer1);
-        }
-
-        if (game2On)
-            window.draw(buffer2);
-        if (game3On)
-            window.draw(buffer3);
-        if (game4On)
-            window.draw(buffer4);
-        window.display();
-
-    }
-
-    // game 1
+    // game 1 Roulette
     if (game1On)
     {
         window.close();
         game1();
     }
-
-    // game 2
+    // game 2 Rock Paper Scissors
     if (game2On)
     {
         window.close();
         game2();
     }
+    // game 3 Slot Machine
+    if (game3On)
+    {
+        window.close();
+        //game3();
+    }
+    // game 4 3D engine
+    if (game4On)
+    {
+        window.close();
+        //game4();
+    }
 
     return 0;
 }
+
 
 void game1()
 {
