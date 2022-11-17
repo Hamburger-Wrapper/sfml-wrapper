@@ -175,7 +175,7 @@ void game1()
                     number = 1;
                     selectNumber = true;
                     one.setColorTextNormal(sf::Color::Red);
-                    srand(time(0));
+                    srand(time(nullptr));
                     magicNumber = rand() % 10 + 1; //makes random number
                 }
                 if (two.update(eventGame1, windowGame))
@@ -183,7 +183,7 @@ void game1()
                     number = 2;
                     selectNumber = true;
                     two.setColorTextNormal(sf::Color::Red);
-                    srand(time(0));
+                    srand(time(nullptr));
                     magicNumber = rand() % 10 + 1; //makes random number
                 }
                 if (three.update(eventGame1, windowGame))
@@ -191,7 +191,7 @@ void game1()
                     number = 3;
                     selectNumber = true;
                     three.setColorTextNormal(sf::Color::Red);
-                    srand(time(0));
+                    srand(time(nullptr));
                     magicNumber = rand() % 10 + 1; //makes random number
                 }
                 if (four.update(eventGame1, windowGame))
@@ -199,7 +199,7 @@ void game1()
                     number = 4;
                     selectNumber = true;
                     four.setColorTextNormal(sf::Color::Red);
-                    srand(time(0));
+                    srand(time(nullptr));
                     magicNumber = rand() % 10 + 1; //makes random number
                 }
                 if (five.update(eventGame1, windowGame))
@@ -207,7 +207,7 @@ void game1()
                     number = 5;
                     selectNumber = true;
                     five.setColorTextNormal(sf::Color::Red);
-                    srand(time(0));
+                    srand(time(nullptr));
                     magicNumber = rand() % 10 + 1; //makes random number
                 }
                 if (six.update(eventGame1, windowGame))
@@ -215,7 +215,7 @@ void game1()
                     number = 6;
                     selectNumber = true;
                     six.setColorTextNormal(sf::Color::Red);
-                    srand(time(0));
+                    srand(time(nullptr));
                     magicNumber = rand() % 10 + 1; //makes random number
                 }
                 if (seven.update(eventGame1, windowGame))
@@ -223,7 +223,7 @@ void game1()
                     number = 7;
                     selectNumber = true;
                     seven.setColorTextNormal(sf::Color::Red);
-                    srand(time(0));
+                    srand(time(nullptr));
                     magicNumber = rand() % 10 + 1; //makes random number
                 }
                 if (eight.update(eventGame1, windowGame))
@@ -231,7 +231,7 @@ void game1()
                     number = 8;
                     selectNumber = true;
                     eight.setColorTextNormal(sf::Color::Red);
-                    srand(time(0));
+                    srand(time(nullptr));
                     magicNumber = rand() % 10 + 1; //makes random number
                 }
                 if (nine.update(eventGame1, windowGame))
@@ -239,7 +239,7 @@ void game1()
                     number = 9;
                     selectNumber = true;
                     nine.setColorTextNormal(sf::Color::Red);
-                    srand(time(0));
+                    srand(time(nullptr));
                     magicNumber = rand() % 10 + 1; //makes random number
                 }
                 if (ten.update(eventGame1, windowGame))
@@ -247,7 +247,7 @@ void game1()
                     number = 10;
                     selectNumber = true;
                     ten.setColorTextNormal(sf::Color::Red);
-                    srand(time(0));
+                    srand(time(nullptr));
                     magicNumber = rand() % 10 + 1; //makes random number
                 }
             }
@@ -444,7 +444,7 @@ void game2()
 
 int botChoice()
 {
-    srand(static_cast<unsigned int>(time(0)));
+    srand(static_cast<unsigned int>(time(nullptr)));
     return (rand() % 3) + 1; // random number between 1 and 3
 }
 

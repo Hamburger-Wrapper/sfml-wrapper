@@ -18,7 +18,7 @@ public:
     //Constructor that sets button label to s, button position to the position,  button size to size (given in pixels), and button color to color.
     Button(std::string s, sf::Vector2f position, sf::Vector2f size, sf::Color color);
     //Destructor  
-    ~Button(){};
+    ~Button(){}
     //change button position to position (what else needs to be changed?)
     void setPosition(sf::Vector2f position);
     //change button size to size (what else needs to be changed?)
@@ -28,15 +28,15 @@ public:
     //change button label to s (what else needs to be changed?)
     void setText(std::string s);
     //sets the color of the text on the button
-    void setColorTextNormal(sf::Color textNormalColor){mTextNormal = textNormalColor;};
+    void setColorTextNormal(sf::Color textNormalColor){mTextNormal = textNormalColor;}
     //sets the color of the text when the mouse is on the button
-    void setColorTextHover(sf::Color textHoverColor){mTextHover = textHoverColor;};
+    void setColorTextHover(sf::Color textHoverColor){mTextHover = textHoverColor;}
     //gets button position on the display screen
-    sf::Vector2f getPosition(){return mPosition;};
+    sf::Vector2f getPosition(){return mPosition;}
     //gets the global bounds of a button
-    sf::Vector2f getDimensions(){return sf::Vector2f(mButton.getGlobalBounds().width, mButton.getGlobalBounds().height);};
+    sf::Vector2f getDimensions(){return sf::Vector2f(mButton.getGlobalBounds().width, mButton.getGlobalBounds().height);}
     //gets the state of the button
-    sf::Uint32 getState(){return mBtnState;};
+    sf::Uint32 getState(){return mBtnState;}
     //This function update the button state and/or look
     bool update(sf::Event& e, sf::RenderWindow& window);
     //draws the button on the display screeen
