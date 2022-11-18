@@ -5,7 +5,7 @@
 #include <iostream>
 #include "menu.h"
 
-void game1(bool &s);
+void game1(bool &s, int &credit);
 
 
 #endif

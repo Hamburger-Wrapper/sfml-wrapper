@@ -1,8 +1,16 @@
 #include "../include/menu.h"
 
-void mainMenu(sf::RenderWindow &window, bool &switch1, bool &switch2, bool &switch3, bool &switch4, bool &switch5, bool &switch6, bool &q)
-{
-       // main menu title header
+void mainMenu(sf::RenderWindow &window, bool &switch1, bool &switch2, bool &switch3, 
+              bool &switch4, bool &switch5, bool &switch6, bool &q, int &c)
+{   
+   
+    // Convert credits to a display on screen
+    std::string cash;
+    std::stringstream ss;
+    ss<<c;
+    cash = ss.str();
+
+    // main menu title header
     Button title("Select A Game", {450, 100}, {400, 100}, sf::Color::Red);
     title.setColorTextHover(sf::Color::Cyan);
 
@@ -29,6 +37,10 @@ void mainMenu(sf::RenderWindow &window, bool &switch1, bool &switch2, bool &swit
     // game 6 3D engine button
     Button playGame6("3D Engine", {650, 488}, {375, 75}, sf::Color::Red);
     playGame6.setColorTextHover(sf::Color::Cyan);
+
+    // total credits left
+    Button credit(cash, {800,75}, {150,50}, sf::Color::Red);
+    
 
     while (window.isOpen() && !switch1 && !switch2 && !switch3 && !switch4 && !switch5 && !switch6)
     {
@@ -72,6 +84,7 @@ void mainMenu(sf::RenderWindow &window, bool &switch1, bool &switch2, bool &swit
         window.draw(playGame4); // black jack
         window.draw(playGame5); // no name
         window.draw(playGame6); // 3-D engine
+        window.draw(credit);
     
         window.display();
     }

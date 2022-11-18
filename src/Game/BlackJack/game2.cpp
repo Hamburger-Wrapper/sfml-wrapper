@@ -1,6 +1,6 @@
 #include "../../include/rps.h"
 
-void game2(bool &s)
+void game2(bool &s, int &credit)
 {
     // game 2
     bool selectNumber = false;

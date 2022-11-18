@@ -1,6 +1,6 @@
 #include "../../include/roulette.h"
 
-void game1(bool &s)
+void game1(bool &s, int &credit)
 {
     // game 1
     bool selectNumber = false;
@@ -10,6 +10,14 @@ void game1(bool &s)
     bool menu = false;
     int number = -1;
     int magicNumber = -1;
+
+    // Convert credit for display
+    std::string cash;
+    std::stringstream ss;
+    ss<<credit;
+    cash = ss.str();
+
+    
 
     sf::RenderWindow windowGame(sf::VideoMode(800, 600), "Game 1");
 
@@ -28,13 +36,19 @@ void game1(bool &s)
     Button six("6", {250, 500}, {50, 50}, sf::Color::Blue);
     Button seven("7", {325, 500}, {50, 50}, sf::Color::Blue);
     Button eight("8", {400, 500}, {50, 50}, sf::Color::Blue);
-    Button nine("9", {475, 500}, {50, 50}, sf::Color::Blue);
+    Button nine("9", {475, 500}, 
+    {50, 50}, sf::Color::Blue);
     Button ten("10", {550, 500}, {50, 50}, sf::Color::Blue);
     Button title("Guess my number 1 to 10", {400, 100}, {700, 100}, sf::Color::Blue);
     Button pickNumber("?", {400, 250}, {100, 100}, sf::Color::Blue);
     // menu return button
     Button mainMenu("menu", {725, 550}, {100, 60}, sf::Color::White);
     mainMenu.setColorTextNormal(sf::Color::Black);
+    // game credits
+    // total credits left
+    Button gameCredit(cash, {100,550}, {150,50}, sf::Color::Blue);
+    gameCredit.setColorTextNormal(sf::Color::Black);
+    
 
     // run the program as long as the window is open
     while (windowGame.isOpen())
@@ -50,8 +64,8 @@ void game1(bool &s)
                 s = true;
             }
 
-
             pickNumber.update(eventGame1, windowGame);
+
             if (newGame.update(eventGame1, windowGame))
             {
                 restart = true;
@@ -170,6 +184,7 @@ void game1(bool &s)
         windowGame.draw(quit);
         windowGame.draw(newGame);
         windowGame.draw(mainMenu);
+        windowGame.draw(gameCredit);
         windowGame.display();
 
         if (selectNumber == true)
@@ -181,6 +196,7 @@ void game1(bool &s)
             else
             {
                 lose = true;
+                
             }
 
             // display winning pick
@@ -198,6 +214,9 @@ void game1(bool &s)
                 pickNumber.setText(s);
                 title.setText("TRY AGAIN SUCKER");
             }
+
+            // display credit
+            gameCredit.setText(std::to_string(credit));
 
             if (restart == true)
             {
