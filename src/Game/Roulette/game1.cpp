@@ -1,14 +1,13 @@
 #include "../../include/roulette.h"
 
-void game1()
+void game1(bool &s)
 {
     // game 1
-
-    // bool generateNumber = false;
     bool selectNumber = false;
     bool win = false;
     bool lose = false;
     bool restart = false;
+    bool menu = false;
     int number = -1;
     int magicNumber = -1;
 
@@ -33,6 +32,9 @@ void game1()
     Button ten("10", {550, 500}, {50, 50}, sf::Color::Blue);
     Button title("Guess my number 1 to 10", {400, 100}, {700, 100}, sf::Color::Blue);
     Button pickNumber("?", {400, 250}, {100, 100}, sf::Color::Blue);
+    // menu return button
+    Button mainMenu("menu", {725, 550}, {100, 60}, sf::Color::White);
+    mainMenu.setColorTextNormal(sf::Color::Black);
 
     // run the program as long as the window is open
     while (windowGame.isOpen())
@@ -43,7 +45,10 @@ void game1()
         {
             // "close requested" event: we close the window
             if (eventGame1.type == sf::Event::Closed)
+            {
                 windowGame.close();
+                s = true;
+            }
 
 
             pickNumber.update(eventGame1, windowGame);
@@ -53,6 +58,13 @@ void game1()
             }
 
             if (quit.update(eventGame1, windowGame))
+            {
+                windowGame.close();
+                s = true;
+            }
+
+            // back to main menu, change game
+            if (mainMenu.update(eventGame1, windowGame))
             {
                 windowGame.close();
             }
@@ -157,6 +169,7 @@ void game1()
         windowGame.draw(pickNumber);
         windowGame.draw(quit);
         windowGame.draw(newGame);
+        windowGame.draw(mainMenu);
         windowGame.display();
 
         if (selectNumber == true)

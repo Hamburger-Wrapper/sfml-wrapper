@@ -3,8 +3,9 @@
 #include <SFML/Graphics.hpp>
 #include "button.h"
 #include <iostream>
+#include "menu.h"
 
-void game1();
+void game1(bool &s);
 
 
 #endif

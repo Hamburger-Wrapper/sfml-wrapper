@@ -4,7 +4,7 @@
 #include "button.h"
 #include <iostream>
 
-void game2();
+void game2(bool &s);
 int botChoice();
 int RPS(int user, int computer);
 
