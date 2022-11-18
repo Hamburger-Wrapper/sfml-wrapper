@@ -9,7 +9,7 @@
 
 ParticleSystem::ParticleSystem(unsigned int count) : m_particles(count), m_vertices(sf::Points, count), m_lifetime(sf::seconds(3)), m_emitter(0, 0)
 {
-    std::srand(std::time(NULL));
+    std::srand(std::time(nullptr));
     for (std::size_t i = 0; i < count; ++i)
         resetParticle(i);
 }
@@ -46,7 +46,7 @@ void ParticleSystem::draw(sf::RenderTarget &target, sf::RenderStates states) con
     states.transform *= getTransform();
 
     // our particles don't use a texture
-    states.texture = NULL;
+    states.texture = nullptr;
 
     // draw the vertex array
     target.draw(m_vertices, states);
