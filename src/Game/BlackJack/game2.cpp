@@ -41,7 +41,6 @@ void game2(bool &s)
                 s = true;
             }
 
-            pickNumber.update(eventGame1, windowGame);
             if (newGame.update(eventGame1, windowGame))
             {
                 restart = true;

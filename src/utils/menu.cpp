@@ -41,18 +41,22 @@ void mainMenu(sf::RenderWindow &window, bool &switch1, bool &switch2, bool &swit
                 window.close();
                 q = true;
             }
-            title.update(event, window);
-
+            // start game 1 roulette
             if (playGame1.update(event, window))
                 switch1 = true;
+            // start game 2 RPS
             if (playGame2.update(event, window))
                 switch2 = true;
+            // start game 3 slot machine
             if (playGame3.update(event, window))
                 switch3 = true;
+            // start game 4 black jack
             if (playGame4.update(event, window))
                 switch4 = true;
+            // start game 5 
             if(playGame5.update(event, window))
                 switch5 = true;
+            // start 3-D engine
             if(playGame6.update(event, window))
                 switch6 = true; 
         }
@@ -61,14 +65,14 @@ void mainMenu(sf::RenderWindow &window, bool &switch1, bool &switch2, bool &swit
         window.clear();
         // title header on start-up screen
         window.draw(title);
-        // play game buttons 1-4
+        // play game buttons 1-6
         window.draw(playGame1); // roulette
         window.draw(playGame2); // rock paper scissors
         window.draw(playGame3); // slot machine
-        window.draw(playGame4); // 3-D engine
-        window.draw(playGame5); // black jack
+        window.draw(playGame4); // black jack
+        window.draw(playGame5); // no name
         window.draw(playGame6); // 3-D engine
-
+    
         window.display();
     }
 
