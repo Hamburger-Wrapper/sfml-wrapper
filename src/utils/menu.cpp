@@ -1,6 +1,6 @@
 #include "../include/menu.h"
 
-void mainMenu(sf::RenderWindow &window, bool &switch1, bool &switch2, bool &switch3, bool &switch4, bool &switch5, bool &switch6)
+void mainMenu(sf::RenderWindow &window, bool &switch1, bool &switch2, bool &switch3, bool &switch4, bool &switch5, bool &switch6, bool &q)
 {
        // main menu title header
     Button title("Select A Game", {450, 100}, {400, 100}, sf::Color::Red);
@@ -35,8 +35,12 @@ void mainMenu(sf::RenderWindow &window, bool &switch1, bool &switch2, bool &swit
         sf::Event event;
         while (window.pollEvent(event))
         {
+            // quit game
             if (event.type == sf::Event::Closed)
+            {
                 window.close();
+                q = true;
+            }
             title.update(event, window);
 
             if (playGame1.update(event, window))

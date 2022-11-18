@@ -31,7 +31,7 @@ int main()
     {
         sf::RenderWindow window(sf::VideoMode(900, 600), "main game menu");
         // handle main game menu
-        mainMenu(window, game1On, game2On, game3On, game4On, game5On, game6On);
+        mainMenu(window, game1On, game2On, game3On, game4On, game5On, game6On, quit);
 
         // game 1 Roulette
         if (game1On)
