@@ -16,7 +16,7 @@
 int main()
 {   
     // starting money
-    int credits = 100;
+    int credits = 500;
 
     // switches to turn on each game application
     bool game1On = false,

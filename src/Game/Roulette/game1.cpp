@@ -3,31 +3,32 @@
 void game1(bool &s, int &credit)
 {
     // game 1
-    bool selectNumber = false;
-    bool win = false;
-    bool lose = false;
-    bool restart = false;
-    bool menu = false;
-    int number = -1;
-    int magicNumber = -1;
+    bool selectNumber = false;  // switch for  selecting a number 
+    bool win = false;           // switch for win 
+    bool lose = false;          // switch for lose
+    bool restart = false;       // switch for restart game
+    bool menu = false;          // switch for menu
+    bool loseDisplay = false;   // switch for lose display
+    bool winDisplay = false;    // switch for win display
+    bool oneTime = false;       // switch to update credit 1 time per game
+    int number = -1;            // users number
+    int magicNumber = -1;       // random number of game
 
-    // Convert credit for display
+    // convert credit for displaying to game screen
     std::string cash;
     std::stringstream ss;
     ss<<credit;
     cash = ss.str();
-
-    
-
+    // game board
     sf::RenderWindow windowGame(sf::VideoMode(800, 600), "Game 1");
-
+    // buttons for playing game
     Button quit("quit", {170, 210}, {200, 75}, sf::Color::Green);
     Button newGame("new game", {170, 310}, {200, 75}, sf::Color::Green);
     newGame.setColorTextNormal(sf::Color::White);
     newGame.setColorTextHover(sf::Color::Red);
     quit.setColorTextNormal(sf::Color::White);
     quit.setColorTextHover(sf::Color::Red);
-
+    // selecting number to play game
     Button one("1", {250, 400}, {50, 50}, sf::Color::Blue);
     Button two("2", {325, 400}, {50, 50}, sf::Color::Blue);
     Button three("3", {400, 400}, {50, 50}, sf::Color::Blue);
@@ -36,8 +37,7 @@ void game1(bool &s, int &credit)
     Button six("6", {250, 500}, {50, 50}, sf::Color::Blue);
     Button seven("7", {325, 500}, {50, 50}, sf::Color::Blue);
     Button eight("8", {400, 500}, {50, 50}, sf::Color::Blue);
-    Button nine("9", {475, 500}, 
-    {50, 50}, sf::Color::Blue);
+    Button nine("9", {475, 500}, {50, 50}, sf::Color::Blue);
     Button ten("10", {550, 500}, {50, 50}, sf::Color::Blue);
     Button title("Guess my number 1 to 10", {400, 100}, {700, 100}, sf::Color::Blue);
     Button pickNumber("?", {400, 250}, {100, 100}, sf::Color::Blue);
@@ -49,7 +49,6 @@ void game1(bool &s, int &credit)
     Button gameCredit(cash, {100,550}, {150,50}, sf::Color::Blue);
     gameCredit.setColorTextNormal(sf::Color::Black);
     
-
     // run the program as long as the window is open
     while (windowGame.isOpen())
     {
@@ -92,6 +91,7 @@ void game1(bool &s, int &credit)
                     one.setColorTextNormal(sf::Color::Red);
                     srand(time(nullptr));
                     magicNumber = rand() % 10 + 1; //makes random number
+                    oneTime = true;
                 }
                 if (two.update(eventGame1, windowGame))
                 {
@@ -100,6 +100,7 @@ void game1(bool &s, int &credit)
                     two.setColorTextNormal(sf::Color::Red);
                     srand(time(nullptr));
                     magicNumber = rand() % 10 + 1; //makes random number
+                    oneTime = true;
                 }
                 if (three.update(eventGame1, windowGame))
                 {
@@ -108,6 +109,7 @@ void game1(bool &s, int &credit)
                     three.setColorTextNormal(sf::Color::Red);
                     srand(time(nullptr));
                     magicNumber = rand() % 10 + 1; //makes random number
+                    oneTime = true;
                 }
                 if (four.update(eventGame1, windowGame))
                 {
@@ -116,6 +118,7 @@ void game1(bool &s, int &credit)
                     four.setColorTextNormal(sf::Color::Red);
                     srand(time(nullptr));
                     magicNumber = rand() % 10 + 1; //makes random number
+                    oneTime = true;
                 }
                 if (five.update(eventGame1, windowGame))
                 {
@@ -124,6 +127,7 @@ void game1(bool &s, int &credit)
                     five.setColorTextNormal(sf::Color::Red);
                     srand(time(nullptr));
                     magicNumber = rand() % 10 + 1; //makes random number
+                    oneTime = true;
                 }
                 if (six.update(eventGame1, windowGame))
                 {
@@ -132,6 +136,7 @@ void game1(bool &s, int &credit)
                     six.setColorTextNormal(sf::Color::Red);
                     srand(time(nullptr));
                     magicNumber = rand() % 10 + 1; //makes random number
+                    oneTime = true;
                 }
                 if (seven.update(eventGame1, windowGame))
                 {
@@ -140,6 +145,7 @@ void game1(bool &s, int &credit)
                     seven.setColorTextNormal(sf::Color::Red);
                     srand(time(nullptr));
                     magicNumber = rand() % 10 + 1; //makes random number
+                    oneTime = true;
                 }
                 if (eight.update(eventGame1, windowGame))
                 {
@@ -148,6 +154,7 @@ void game1(bool &s, int &credit)
                     eight.setColorTextNormal(sf::Color::Red);
                     srand(time(nullptr));
                     magicNumber = rand() % 10 + 1; //makes random number
+                    oneTime = true;
                 }
                 if (nine.update(eventGame1, windowGame))
                 {
@@ -156,6 +163,8 @@ void game1(bool &s, int &credit)
                     nine.setColorTextNormal(sf::Color::Red);
                     srand(time(nullptr));
                     magicNumber = rand() % 10 + 1; //makes random number
+                    oneTime = true;
+                    
                 }
                 if (ten.update(eventGame1, windowGame))
                 {
@@ -164,6 +173,7 @@ void game1(bool &s, int &credit)
                     ten.setColorTextNormal(sf::Color::Red);
                     srand(time(nullptr));
                     magicNumber = rand() % 10 + 1; //makes random number
+                    oneTime = true;
                 }
             }
         }
@@ -190,25 +200,37 @@ void game1(bool &s, int &credit)
         if (selectNumber == true)
         {
             if (magicNumber == number)
-            {
+            { 
                 win = true;
+                winDisplay = true;
+                if(oneTime == true)
+                {
+                    credit = credit + 100;
+                    oneTime = false;
+                }
             }
             else
             {
                 lose = true;
-                
+                loseDisplay = true;
+                if(oneTime == true)
+                {
+                    credit = credit - 10;
+                    oneTime = false;
+                }
             }
 
             // display winning pick
-            if (win == true)
+            if (winDisplay == true)
             {
                 std::string s = std::to_string(magicNumber);
                 pickNumber.setText(s); //displays the hidden number
                 title.setText("YOU WIN, GET PAID");
+
             }
 
             // display losing pick
-            if (lose == true)
+            if (loseDisplay == true)
             {
                 std::string s = std::to_string(magicNumber);
                 pickNumber.setText(s);
@@ -221,8 +243,8 @@ void game1(bool &s, int &credit)
             if (restart == true)
             {
                 selectNumber = false;
-                win = false;
-                lose = false;
+                winDisplay = false;
+                loseDisplay = false;
                 restart = false;
                 number = -1;
                 magicNumber = -1;
