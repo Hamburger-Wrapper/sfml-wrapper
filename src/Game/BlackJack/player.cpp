@@ -1,5 +1,6 @@
     #include "player.h"
 
+    //useless code delete
     void Player::setName(string name)
     {
         mName=name;
@@ -8,6 +9,7 @@
     {
         return mName;
     }
+    //end
     void Player::hitCard(Deck &deck)
     {
         card newCard = deck.dealCard();
@@ -31,7 +33,16 @@
         int count = 0;
         for (int i = 0; i<size; i++)
         {
-            int points = mHand[i].getValue();
+            card myCard = mHand[i];
+            int points = myCard.getValue();
+            points = points + 1;
+            while (points > 13)
+            {
+                if(points > 13)
+                {
+                    points = points - 13;
+                }
+            }
             if (points ==1)
                 {points=11;}
             else if (points>10)
@@ -39,14 +50,17 @@
 
             count+=points;
         }
-        //return count;
+        return count;
     }
+    //no need to print the name of the player, just the cards in the hand
+    //modify to return values
     void Player::print() const
     {
-        cout << getName() << endl;
         for (int i = 0; i < static_cast<int>(mHand.size()); i++)
         {
-            cout << mHand[i].getValue() << " ";
-            //mHand[i].print();
+            card myCard = mHand[i];
+            cout << myCard.getValue() << " ";
+            myCard.print();
+            cout << endl;
         }
     }
