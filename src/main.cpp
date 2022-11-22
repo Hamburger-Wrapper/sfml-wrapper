@@ -8,6 +8,7 @@
 #include "include/menu.h"
 #include "include/rps.h"
 #include "include/roulette.h"
+#include "include/blackjack.h"
 
 //#include "../headers/buttonCircle.h"
 
@@ -57,8 +58,8 @@ int main()
         // game 4 3D engine
         if (game4On)
         {
-        window.close();
-        //game4(quit);
+            window.close();
+            game4(quit, credits);
         }
         game1On = false;
         game2On = false;
