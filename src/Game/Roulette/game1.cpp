@@ -67,13 +67,14 @@ void game1(bool &s, int &credit)
     ss<<credit;
     cash = ss.str();
 
-    // game boardButton 4 window
+    // game board window
     sf::RenderWindow windowGame(sf::VideoMode(825, 700), "Game 4");
 
     // new game button
     Button newGame("new game", {100, 550}, {150, 50}, sf::Color::White);
     newGame.setColorTextNormal(sf::Color::Black);
     newGame.setColorTextHover(sf::Color::Red);
+
     // quit button
     Button quit("quit", {100, 600}, {150, 50}, sf::Color::White);
     quit.setColorTextNormal(sf::Color::Black);
@@ -85,7 +86,7 @@ void game1(bool &s, int &credit)
     spin.setColorTextHover(sf::Color::Red);
 
 
-    // starting positions and metric's for beeting buttons
+    // starting positions and metric's for betting buttons
     float xStartnumber = 225;
     float yStartnumber = 500;
     float xNumberOffset = 50;
@@ -130,6 +131,7 @@ void game1(bool &s, int &credit)
     Button twelve("12", {xStartnumber+xNumberOffset*11, yStartnumber}, {widthNumber, heightNumber}, sf::Color::Green);
     twelve.setColorTextNormal(sf::Color::White);
     twelve.setColorTextHover(sf::Color::Red);
+
     // 2nd row of betting numbers
     Button thirteen("13", {xStartnumber, yStartnumber+yNumberOffset}, {widthNumber, heightNumber}, sf::Color::Green);   
     thirteen.setColorTextNormal(sf::Color::White);
@@ -236,6 +238,7 @@ void game1(bool &s, int &credit)
     // menu return button
     Button mainMenu("menu", {100,650}, {150, 50}, sf::Color::White);
     mainMenu.setColorTextNormal(sf::Color::Black);
+
     // game credits
     // total credits left
     Button gameCredit(cash, {100,475}, {150,50}, sf::Color::Blue);
@@ -261,21 +264,20 @@ void game1(bool &s, int &credit)
                 s = true;
             }
 
-            // players directions
-            //hit.update(eventGame1, windowGame);
-            //stay.update(eventGame1, windowGame);
-
+            // starts a new game button, resets all switches
             if (newGame.update(eventGame1, windowGame))
             {
                 restart = true;
             }
 
+            // quit game button
             if (quit.update(eventGame1, windowGame))
             {
                 windowGame.close();
                 s = true;
             }
 
+            // activates the game to be played
             if (spin.update(eventGame1, windowGame))
             {
                 spinWheel = true;
@@ -289,6 +291,7 @@ void game1(bool &s, int &credit)
                 windowGame.close();
             }
 
+            // no game being played set bets, each button pushed sets a switch
             if (spinWheel == false)
             {
                 // bet 1 selected
@@ -598,6 +601,8 @@ void game1(bool &s, int &credit)
             }   
         }
 
+        //draws everything
+        // first row of bets
         windowGame.clear();
         windowGame.draw(one);
         windowGame.draw(two);
@@ -611,6 +616,7 @@ void game1(bool &s, int &credit)
         windowGame.draw(ten);
         windowGame.draw(eleven);
         windowGame.draw(twelve);
+        // second row of bets
         windowGame.draw(thirteen);
         windowGame.draw(fourteen);
         windowGame.draw(fifteen);
@@ -623,6 +629,7 @@ void game1(bool &s, int &credit)
         windowGame.draw(twentytwo);
         windowGame.draw(twentythree);
         windowGame.draw(twentyfour);
+        // third row of bets
         windowGame.draw(twentyfive);
         windowGame.draw(twentysix);
         windowGame.draw(twentyseven);
@@ -643,15 +650,13 @@ void game1(bool &s, int &credit)
         windowGame.draw(first18);
         windowGame.draw(second18);
 
-
+        // game wheel
         windowGame.draw(wheel);
-        
-       
-        
+        // player and dealer tags
         windowGame.draw(dealerLabel);
         windowGame.draw(playerLabel);
 
-        // header
+        // header/tittle
         windowGame.draw(title);
     
         // user buttons
@@ -662,6 +667,7 @@ void game1(bool &s, int &credit)
         windowGame.draw(gameCredit);
         windowGame.display();
 
+    
         if (selectNumber == true && spinWheel == true)
         {
             if (magicNumber == number)
@@ -670,7 +676,7 @@ void game1(bool &s, int &credit)
                 winDisplay = true;
                 if(oneTime == true)
                 {
-                    credit = credit + 100;
+                    credit = credit + 4000;
                     oneTime = false;
                 }
             }
@@ -691,7 +697,8 @@ void game1(bool &s, int &credit)
                 std::string s = std::to_string(magicNumber);
                // stay.setText(s); //displays the hidden number
             
-                title.setText("YOU WIN, GET PAID");
+                title.setText("Winner");
+
 
             }
 
