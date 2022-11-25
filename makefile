@@ -1,5 +1,5 @@
 CXX      = clang++
-CXXFLAGS = -Weverything -Wno-c++98-compat -Wno-c++11-extensions -Wno-padded -Wno-conversion -Wno-global-constructors -Wno-exit-time-destructors
+CXXFLAGS = -Weverything -Wno-c++11-extensions -Wno-padded -Wno-conversion -Wno-global-constructors -Wno-exit-time-destructors
 EXEC     = Casino
 LIB      = -lsfml-window -lsfml-graphics -lsfml-system
 SRC      = $(shell find src -type f -name '*.cpp')
