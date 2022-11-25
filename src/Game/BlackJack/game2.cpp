@@ -1,6 +1,6 @@
 #include "../../include/rps.h"
 
-void game2(bool &s)
+void game2(bool &s, int &credit)
 {
     // game 2
     bool selectNumber = false;
@@ -24,6 +24,8 @@ void game2(bool &s)
     Button three("scissors", {400, 500}, {100, 50}, sf::Color::Blue);
     Button title("rock paper scissor", {400, 100}, {700, 100}, sf::Color::Blue);
     Button pickNumber("?", {400, 250}, {100, 100}, sf::Color::Blue);
+    Button mainMenu("menu", {725, 550}, {100, 60}, sf::Color::White);
+    mainMenu.setColorTextNormal(sf::Color::Black);
 
     // run the program as long as the window is open
     while (windowGame.isOpen())
@@ -34,16 +36,24 @@ void game2(bool &s)
         {
             // "close requested" event: we close the window
             if (eventGame1.type == sf::Event::Closed)
+            {
                 windowGame.close();
-            // start button removed, there is no need
+                s = true;
+            }
 
-            pickNumber.update(eventGame1, windowGame);
             if (newGame.update(eventGame1, windowGame))
             {
                 restart = true;
             }
 
             if (quit.update(eventGame1, windowGame))
+            {
+                windowGame.close();
+                s = true;
+            }
+
+            // back to main menu, change game
+            if (mainMenu.update(eventGame1, windowGame))
             {
                 windowGame.close();
             }
@@ -82,6 +92,7 @@ void game2(bool &s)
         windowGame.draw(pickNumber);
         windowGame.draw(quit);
         windowGame.draw(newGame);
+        windowGame.draw(mainMenu);
         windowGame.display();
         if (selectNumber)
         {
