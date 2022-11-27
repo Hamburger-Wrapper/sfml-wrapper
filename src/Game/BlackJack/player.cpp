@@ -1,15 +1,5 @@
     #include "player.h"
 
-    //useless code delete
-    void Player::setName(string name)
-    {
-        mName=name;
-    }
-    string Player::getName() const
-    {
-        return mName;
-    }
-    //end
     void Player::hitCard(Deck &deck)
     {
         card newCard = deck.dealCard();
