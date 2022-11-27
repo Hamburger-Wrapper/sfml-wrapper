@@ -20,9 +20,6 @@ int blackJack()
 
     Deck myDeck;
 
-    bool repeat = true;
-    //while (repeat)
-    //{
         //Dealing two cards to each player
         for (int i = 0; i < 2; i++)
         {
@@ -87,8 +84,7 @@ int blackJack()
                     return 1; //win
                 }
             }
-        } //end while
-    //}
+    }
 
     return 0;
 }
