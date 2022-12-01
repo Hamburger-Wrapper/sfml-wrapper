@@ -4,9 +4,7 @@
 
 - **[Marty Martin](https://github.com/FancyKat)**
 - **[Brent Knopp](https://github.com/bknopp71)**
-
-
-~~**[Nolan Meyers](https://github.com/)**~~
+- ~~**[Nolan Meyers](https://github.com/)**~~
 
 ## Members Responsibility
 
