@@ -1305,6 +1305,9 @@ void game1(bool &s, int &credit)
                 twentyeight.setColorTextNormal(sf::Color::White);
                 twentynine.setColorTextNormal(sf::Color::White);
                 thirty.setColorTextNormal(sf::Color::White); 
+                thirtyone.setColorTextNormal(sf::Color::White);
+                thirtytwo.setColorTextNormal(sf::Color::White);
+                thirtythree.setColorTextNormal(sf::Color::White);
                 thirtyfour.setColorTextNormal(sf::Color::White);
                 thirtyfive.setColorTextNormal(sf::Color::White);
                 thirtysix.setColorTextNormal(sf::Color::White);
@@ -1358,7 +1361,6 @@ void game1(bool &s, int &credit)
                 switchOdd = false;
                 switchRed = false;
                 switchBlack = false; 
-                multipier += 35;  
                 selectNumber = false;
                 winDisplay = false;
                 loseDisplay = false;
@@ -1368,11 +1370,9 @@ void game1(bool &s, int &credit)
                 time2 = (rand() % 36) + 2000;
                 win = false;
                 multipier = 0;
-                lose = false;
                 loseDisplay = false;
                 winDisplay = false;
                 lose = false;
-                bet = 0;
                 magicNumber = 1;  
                 number = -1;
                 oneTime = true;
