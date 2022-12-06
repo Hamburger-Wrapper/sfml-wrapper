@@ -22,10 +22,12 @@ void game2(bool &s, int &credit)
     Button one("rock", {200, 500}, {100, 50}, sf::Color::Blue);
     Button two("paper", {300, 500}, {100, 50}, sf::Color::Blue);
     Button three("scissors", {400, 500}, {100, 50}, sf::Color::Blue);
-    Button title("rock paper scissor", {400, 100}, {700, 100}, sf::Color::Blue);
-    Button pickNumber("?", {400, 250}, {100, 100}, sf::Color::Blue);
+    Button title("Rock/Paper/Scissors", {400, 100}, {700, 100}, sf::Color::Blue);
+    Button pickNumber("?", {500, 300}, {200, 150}, sf::Color::Blue);
     Button mainMenu("menu", {725, 550}, {100, 60}, sf::Color::White);
-    mainMenu.setColorTextNormal(sf::Color::Black);
+    Button displayResults("results", {500, 200}, {200, 50}, sf::Color::Blue);
+    displayResults.setColorTextNormal(sf::Color::Black);
+    
 
     // run the program as long as the window is open
     while (windowGame.isOpen())
@@ -93,24 +95,25 @@ void game2(bool &s, int &credit)
         windowGame.draw(quit);
         windowGame.draw(newGame);
         windowGame.draw(mainMenu);
+        windowGame.draw(displayResults);
         windowGame.display();
         if (selectNumber)
         {
             if (RPS(player, bot) == 1) // display winning pick
                 {
-                    title.setText("win");
+                    displayResults.setText("  win  ");
                     std::string s = std::to_string(bot);
                     pickNumber.setText(s);
                 }
                 if (RPS(player, bot) == 0) //losing pick
                 {
-                    title.setText("lose");
+                    displayResults.setText(" lose ");
                     std::string s = std::to_string(bot);
                     pickNumber.setText(s);
                 }
                 else if (RPS(player, bot) == 2) // tie
                 {
-                    title.setText("Tie");
+                    displayResults.setText("  Tie  ");
                     std::string s = std::to_string(bot);
                     pickNumber.setText(s);
                 }

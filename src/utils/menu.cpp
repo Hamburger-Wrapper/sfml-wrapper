@@ -31,7 +31,7 @@ void mainMenu(sf::RenderWindow &window, bool &switch1, bool &switch2, bool &swit
     playGame4.setColorTextHover(sf::Color::Cyan);
 
      // game 5
-    Button playGame5("game 5", {250, 488}, {375, 75}, sf::Color::Red);
+    Button playGame5("Keno", {250, 488}, {375, 75}, sf::Color::Red);
     playGame5.setColorTextHover(sf::Color::Cyan);
 
     // game 6 3D engine button

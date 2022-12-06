@@ -61,6 +61,11 @@ int main()
             window.close();
             game4(quit, credits);
         }
+        if(game5On)
+        {
+            window.close();
+            game5(quit, credits);
+        }
         game1On = false;
         game2On = false;
         game3On = false;

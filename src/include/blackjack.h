@@ -6,6 +6,7 @@
 #include "menu.h"
 
 void game4(bool &s, int &credit);
+void game5(bool &s, int &credit);
 
 
 #endif

@@ -225,7 +225,7 @@ void game5(bool &s, int &credit)
             {
                 std::string s = std::to_string(magicNumber);
                 pickNumber.setText(s); //displays the hidden number
-                title.setText("YOU WIN, GET PAID");
+                title.setText("   YOU WIN, GET PAID ");
 
             }
 
@@ -234,7 +234,7 @@ void game5(bool &s, int &credit)
             {
                 std::string s = std::to_string(magicNumber);
                 pickNumber.setText(s);
-                title.setText("TRY AGAIN SUCKER");
+                title.setText("    TRY AGAIN SUCKER  ");
             }
 
             // display credit

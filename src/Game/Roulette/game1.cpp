@@ -3,17 +3,28 @@
 void game1(bool &s, int &credit)
 {
     // game play switches
-    bool selectNumber = false;  // switch for  selecting a number 
-    bool win = false;           // switch for win 
-    bool lose = false;          // switch for lose
-    bool restart = false;       // switch for restart game
-    bool menu = false;          // switch for menu
-    bool loseDisplay = false;   // switch for lose display
-    bool winDisplay = false;    // switch for win display
-    bool oneTime = false;       // switch to update credit 1 time per game
-    bool spinWheel = false;     // switch to spin wheel
-    int number = -1;            // users number
-    int magicNumber = -1;       // random number of game
+    bool selectNumber = false;          // switch for  selecting a number 
+    bool win = false;                   // switch for win 
+    bool lose = false;                  // switch for lose
+    bool restart = false;               // switch for restart game
+    bool menu = false;                  // switch for menu
+    bool loseDisplay = false;           // switch for lose display
+    bool winDisplay = false;            // switch for win display
+    bool oneTime = false;               // switch to update credit 1 time per game
+    bool spinWheel = false;             // switch to spin wheel
+    bool blackSwitch = false;           // switch for black
+    bool redSwitch = false;             // switch for red
+    bool evenSwitch = false;            // switch for even
+    bool oddSwitch = false;             // switch for odd
+    bool first18Switch = false;         // switch for first 18
+    bool second18Switch = false;        // switch for second 18
+    int number = -1;                     // users number
+    int magicNumber = 1;                // random number of game
+    bool rotating = false;               // switch for wheel rotation
+    int time = 0;                       // time for wheel rotation
+    int time2 = 2000 + rand() % 36;     // random time for wheel to stop
+    int multipier = 0;                  // multiplier for win
+    int bet = 0;                        // number of credits bet  
 
     // bet switches
     bool switch1 = false,
@@ -81,7 +92,7 @@ void game1(bool &s, int &credit)
     quit.setColorTextHover(sf::Color::Red);
 
     // spin button
-    Button spin("spin", {100, 300}, {150, 50}, sf::Color::Red);
+    Button spin("spin", {100, 300}, {150, 50}, sf::Color::White);
     spin.setColorTextNormal(sf::Color::White);
     spin.setColorTextHover(sf::Color::Red);
 
@@ -232,8 +243,8 @@ void game1(bool &s, int &credit)
     Button title("Roulette", {413, 75}, {700, 100}, sf::Color::Blue);
 
     // wheel
-    Button wheel("Go Marty", {500, 300}, {500, 275}, sf::Color::White);
-    wheel.setColorTextNormal(sf::Color::Red);
+    Button wheel(" ?", {500, 300}, {500, 275}, sf::Color::Blue);
+    wheel.setColorTextNormal(sf::Color::White);
 
     // menu return button
     Button mainMenu("menu", {100,650}, {150, 50}, sf::Color::White);
@@ -277,12 +288,15 @@ void game1(bool &s, int &credit)
                 s = true;
             }
 
-            // activates the game to be played
+
+
             if (spin.update(eventGame1, windowGame))
             {
                 spinWheel = true;
+                rotating = true;
                 newGame.setColorTextNormal(sf::Color::Red);
                 spin.setColorTextNormal(sf::Color::Red);
+
             }
 
             // back to main menu, change game
@@ -301,6 +315,7 @@ void game1(bool &s, int &credit)
                     selectNumber = true;
                     one.setColorTextNormal(sf::Color::Red);
                     oneTime = true;
+                    bet++;
                 }
                 if (two.update(eventGame1, windowGame))
                 {
@@ -308,6 +323,7 @@ void game1(bool &s, int &credit)
                     selectNumber = true;
                     two.setColorTextNormal(sf::Color::Red);
                     oneTime = true;
+                    bet++;
                 }
                 if (three.update(eventGame1, windowGame))
                 {
@@ -315,13 +331,16 @@ void game1(bool &s, int &credit)
                     selectNumber = true;
                     three.setColorTextNormal(sf::Color::Red);
                     oneTime = true;
+                    bet++;
                 }
                 if (four.update(eventGame1, windowGame))
                 {
                     switch4 = true;
                     selectNumber = true;
                     four.setColorTextNormal(sf::Color::Red);
-                    oneTime = true;    
+                    oneTime = true; 
+                    bet++;
+                   
                 }
                 if (five.update(eventGame1, windowGame))
                 {
@@ -329,6 +348,7 @@ void game1(bool &s, int &credit)
                     selectNumber = true;
                     five.setColorTextNormal(sf::Color::Red);
                     oneTime = true;
+                    bet++;
                 }
                 if (six.update(eventGame1, windowGame))
                 {
@@ -336,6 +356,7 @@ void game1(bool &s, int &credit)
                     selectNumber = true;
                     six.setColorTextNormal(sf::Color::Red);
                     oneTime = true;
+                    bet++;
                 }
                 if (seven.update(eventGame1, windowGame))
                 {
@@ -343,6 +364,7 @@ void game1(bool &s, int &credit)
                     selectNumber = true;
                     seven.setColorTextNormal(sf::Color::Red);
                     oneTime = true;
+                    bet++;
                 }
                 if (eight.update(eventGame1, windowGame))
                 {
@@ -350,6 +372,7 @@ void game1(bool &s, int &credit)
                     selectNumber = true;
                     eight.setColorTextNormal(sf::Color::Red);
                     oneTime = true;
+                    bet++;
                 }
                 if (nine.update(eventGame1, windowGame))
                 {
@@ -357,6 +380,7 @@ void game1(bool &s, int &credit)
                     selectNumber = true;
                     nine.setColorTextNormal(sf::Color::Red);
                     oneTime = true;
+                    bet++;
                     
                 }
                 if (ten.update(eventGame1, windowGame))
@@ -365,6 +389,7 @@ void game1(bool &s, int &credit)
                     selectNumber = true;
                     ten.setColorTextNormal(sf::Color::Red);
                     oneTime = true;
+                    bet++;
                 }
                 if (eleven.update(eventGame1, windowGame))
                 {
@@ -372,6 +397,7 @@ void game1(bool &s, int &credit)
                     selectNumber = true;
                     eleven.setColorTextNormal(sf::Color::Red);
                     oneTime = true;
+                    bet++;
                 }
                 if (twelve.update(eventGame1, windowGame))
                 {
@@ -379,6 +405,7 @@ void game1(bool &s, int &credit)
                     selectNumber = true;
                     twelve.setColorTextNormal(sf::Color::Red);
                     oneTime = true;
+                    bet++;
                 }
                 if (thirteen.update(eventGame1, windowGame))
                 {
@@ -386,6 +413,7 @@ void game1(bool &s, int &credit)
                     selectNumber = true;
                     thirteen.setColorTextNormal(sf::Color::Red);
                     oneTime = true;
+                    bet++;
                 }
                 if (fourteen.update(eventGame1, windowGame))
                 {
@@ -393,6 +421,7 @@ void game1(bool &s, int &credit)
                     selectNumber = true;
                     fourteen.setColorTextNormal(sf::Color::Red);
                     oneTime = true;
+                    bet++;
                 }
                 if (fifteen.update(eventGame1, windowGame))
                 {
@@ -400,6 +429,7 @@ void game1(bool &s, int &credit)
                     selectNumber = true;
                     fifteen.setColorTextNormal(sf::Color::Red);
                     oneTime = true;
+                    bet++;
                 }
                 if (sixteen.update(eventGame1, windowGame))
                 {
@@ -407,6 +437,7 @@ void game1(bool &s, int &credit)
                     selectNumber = true;
                     sixteen.setColorTextNormal(sf::Color::Red);
                     oneTime = true;
+                    bet++;
                 }
                 if (seventeen.update(eventGame1, windowGame))
                 {
@@ -414,6 +445,7 @@ void game1(bool &s, int &credit)
                     selectNumber = true;
                     seventeen.setColorTextNormal(sf::Color::Red);
                     oneTime = true;
+                    bet++;
                 }
                 if (eighteen.update(eventGame1, windowGame))
                 {
@@ -421,6 +453,7 @@ void game1(bool &s, int &credit)
                     selectNumber = true;
                     eighteen.setColorTextNormal(sf::Color::Red);
                     oneTime = true;
+                    bet++;
                 }
                 if (nineteen.update(eventGame1, windowGame))
                 {
@@ -428,6 +461,7 @@ void game1(bool &s, int &credit)
                     selectNumber = true;
                     nineteen.setColorTextNormal(sf::Color::Red);
                     oneTime = true;
+                    bet++;
                 }
                 if (twenty.update(eventGame1, windowGame))
                 {
@@ -435,6 +469,7 @@ void game1(bool &s, int &credit)
                     selectNumber = true;
                     twenty.setColorTextNormal(sf::Color::Red);
                     oneTime = true;
+                    bet++;
                 }
                 if (twentyone.update(eventGame1, windowGame))
                 {
@@ -442,6 +477,7 @@ void game1(bool &s, int &credit)
                     selectNumber = true;
                     twentyone.setColorTextNormal(sf::Color::Red);
                     oneTime = true;
+                    bet++;
                 }
                 if (twentytwo.update(eventGame1, windowGame))
                 {
@@ -449,6 +485,7 @@ void game1(bool &s, int &credit)
                     selectNumber = true;
                     twentytwo.setColorTextNormal(sf::Color::Red);
                     oneTime = true;
+                    bet++;
                 }
                 if (twentythree.update(eventGame1, windowGame))
                 {
@@ -456,6 +493,7 @@ void game1(bool &s, int &credit)
                     selectNumber = true;
                     twentythree.setColorTextNormal(sf::Color::Red);
                     oneTime = true;
+                    bet++;
                 }
                 if (twentyfour.update(eventGame1, windowGame))
                 {
@@ -463,6 +501,7 @@ void game1(bool &s, int &credit)
                     selectNumber = true;
                     twentyfour.setColorTextNormal(sf::Color::Red);
                     oneTime = true;
+                    bet++;
                 }
                 if (twentyfive.update(eventGame1, windowGame))
                 {
@@ -470,6 +509,7 @@ void game1(bool &s, int &credit)
                     selectNumber = true;
                     twentyfive.setColorTextNormal(sf::Color::Red);
                     oneTime = true;
+                    bet++;
                 }
                 if (twentysix.update(eventGame1, windowGame))
                 {
@@ -477,6 +517,7 @@ void game1(bool &s, int &credit)
                     selectNumber = true;
                     twentysix.setColorTextNormal(sf::Color::Red);
                     oneTime = true;
+                    bet++;
                 }
                 if (twentyseven.update(eventGame1, windowGame))
                 {
@@ -484,6 +525,7 @@ void game1(bool &s, int &credit)
                     selectNumber = true;
                     twentyseven.setColorTextNormal(sf::Color::Red);
                     oneTime = true;
+                    bet++;
                 }
                 if (twentyeight.update(eventGame1, windowGame))
                 {
@@ -491,13 +533,15 @@ void game1(bool &s, int &credit)
                     selectNumber = true;
                     twentyeight.setColorTextNormal(sf::Color::Red);
                     oneTime = true;
+                    bet++;
                 }
                 if (twentynine.update(eventGame1, windowGame))
                 {
                     switch29 = true;
                     selectNumber = true;
-                    magicNumber = rand() % 10 + 1; //makes random number
+                    twentynine.setColorTextNormal(sf::Color::Red);
                     oneTime = true;
+                    bet++;
                 }
                 if (thirty.update(eventGame1, windowGame))
                 {
@@ -505,6 +549,7 @@ void game1(bool &s, int &credit)
                     selectNumber = true;
                     thirty.setColorTextNormal(sf::Color::Red);
                     oneTime = true;
+                    bet++;
                 }
                 if (thirtyone.update(eventGame1, windowGame))
                 {
@@ -512,6 +557,7 @@ void game1(bool &s, int &credit)
                     selectNumber = true;
                     thirtyone.setColorTextNormal(sf::Color::Red);
                     oneTime = true;
+                    bet++;
                 }
                 if (thirtytwo.update(eventGame1, windowGame))
                 {
@@ -519,6 +565,7 @@ void game1(bool &s, int &credit)
                     selectNumber = true;
                     thirtytwo.setColorTextNormal(sf::Color::Red);
                     oneTime = true;
+                    bet++;
                 }
                 if (thirtythree.update(eventGame1, windowGame))
                 {
@@ -526,6 +573,7 @@ void game1(bool &s, int &credit)
                     selectNumber = true;
                     thirtythree.setColorTextNormal(sf::Color::Red);
                     oneTime = true;
+                    bet++;
                 }
                 if (thirtyfour.update(eventGame1, windowGame))
                 {
@@ -533,6 +581,7 @@ void game1(bool &s, int &credit)
                     selectNumber = true;
                     thirtyfour.setColorTextNormal(sf::Color::Red);
                     oneTime = true;
+                    bet++;
                 }
                 if (thirtyfive.update(eventGame1, windowGame))
                 {
@@ -540,6 +589,7 @@ void game1(bool &s, int &credit)
                     selectNumber = true;
                     thirtyfive.setColorTextNormal(sf::Color::Red);
                     oneTime = true;
+                    bet++;
                 }
                 if (thirtysix.update(eventGame1, windowGame))
                 {
@@ -547,6 +597,7 @@ void game1(bool &s, int &credit)
                     selectNumber = true;
                     thirtysix.setColorTextNormal(sf::Color::Red);
                     oneTime = true;
+                    bet++;
                 }
                 if (even.update(eventGame1, windowGame))
                 {
@@ -554,6 +605,7 @@ void game1(bool &s, int &credit)
                     selectNumber = true;
                     even.setColorTextNormal(sf::Color::Red);
                     oneTime = true;
+                    bet++;
                 }
                 if (odd.update(eventGame1, windowGame))
                 {
@@ -561,6 +613,7 @@ void game1(bool &s, int &credit)
                     selectNumber = true;
                     odd.setColorTextNormal(sf::Color::Red);
                     oneTime = true;
+                    bet++;
                 }
                 if (red.update(eventGame1, windowGame))
                 {
@@ -568,6 +621,7 @@ void game1(bool &s, int &credit)
                     selectNumber = true;
                     red.setColorTextNormal(sf::Color::Red);
                     oneTime = true;
+                    bet++;
                 }
                 if (black.update(eventGame1, windowGame))
                 {
@@ -575,6 +629,7 @@ void game1(bool &s, int &credit)
                     selectNumber = true;
                     black.setColorTextNormal(sf::Color::Red);
                     oneTime = true;
+                    bet++;
                 }
                 if (first18.update(eventGame1, windowGame))
                 {
@@ -582,6 +637,7 @@ void game1(bool &s, int &credit)
                     selectNumber = true;
                     first18.setColorTextNormal(sf::Color::Red);
                     oneTime = true;
+                    bet++;
                 }
                 if (second18.update(eventGame1, windowGame))
                 {
@@ -589,17 +645,277 @@ void game1(bool &s, int &credit)
                     selectNumber = true;
                     second18.setColorTextNormal(sf::Color::Red);
                     oneTime = true;
+                    bet++;
                 }
-                // wheel
-                if(wheel.update(eventGame1, windowGame))
-                {
-
-                }
+                
 
 
                 
             }   
         }
+
+
+        
+
+        // wheel
+        if(spinWheel == true && time <= time2)
+        {   if(magicNumber == 1 && rotating == true)
+            {
+               wheel.setText("1 ");
+               rotating = false;
+               title.setText("Loser");
+               magicNumber = 2;
+            }
+            if(magicNumber == 2 && rotating == true)
+            {
+               wheel.setText("2 ");
+               title.setText("Winner");
+               rotating = false;
+               magicNumber = 3;
+            }
+            if(magicNumber == 3 && rotating == true)
+            {
+               wheel.setText("3 ");
+               rotating = false;
+
+               title.setText("Loser");
+               magicNumber = 4;
+            }
+            if(magicNumber == 4 && rotating == true)
+            {
+               wheel.setText("4 ");
+               title.setText("Winner");
+               rotating = false;
+               magicNumber = 5;
+            }
+            if(magicNumber == 5 && rotating == true)
+            {
+               wheel.setText("5 ");
+               rotating = false;
+               title.setText("Loser");
+               magicNumber = 6;
+            }
+            if(magicNumber == 6 && rotating == true)
+            {
+               wheel.setText("6 ");
+               title.setText("Winner");
+               rotating = false;
+               magicNumber = 7;
+            }
+            if(magicNumber == 7 && rotating == true)
+            {
+               wheel.setText("7 ");
+               rotating = false;
+               title.setText("Loser");
+               magicNumber = 8;
+            }
+            if(magicNumber == 8 && rotating == true)
+            {
+               wheel.setText("8 ");
+               title.setText("Winner");
+               rotating = false;
+               magicNumber = 9;
+            }
+            if(magicNumber == 9 && rotating == true)
+            {
+               wheel.setText("9 ");
+               title.setText("Loser");
+               rotating = false;
+               magicNumber = 10;
+            }
+            if(magicNumber == 10 && rotating == true)
+            {
+               wheel.setText("10");
+               title.setText("Winner");
+               rotating = false;
+               magicNumber = 11;
+            }
+            if(magicNumber == 11 && rotating == true)
+            {
+               wheel.setText("11");
+               rotating = false;
+               title.setText("Loser");
+               magicNumber = 12;
+            }
+            if(magicNumber == 12 && rotating == true)
+            {
+               wheel.setText("12");
+               title.setText("Winner");
+               rotating = false;
+               magicNumber = 13;
+            }
+            if(magicNumber == 13 && rotating == true)
+            {
+               wheel.setText("13");
+               title.setText("Loser");
+               rotating = false;
+               magicNumber = 14;
+            }
+            if(magicNumber == 14 && rotating == true)
+            {
+               wheel.setText("14");
+               title.setText("Winner");
+               rotating = false;
+               magicNumber = 15;
+            }
+            if(magicNumber == 15 && rotating == true)
+            {
+               wheel.setText("15");
+               title.setText("Loser");
+               rotating = false;
+               magicNumber = 16;
+            }
+            if(magicNumber == 16 && rotating == true)
+            {
+               wheel.setText("16");
+               title.setText("Winner");
+               rotating = false;
+               magicNumber = 17;
+            }
+            if(magicNumber == 17 && rotating == true)
+            {
+               wheel.setText("17");
+               rotating = false;
+               title.setText("Loser");
+               magicNumber = 18;
+            }
+            if(magicNumber == 18 && rotating == true)
+            {
+               wheel.setText("18");
+               title.setText("Winner");
+               rotating = false;
+               magicNumber = 19;
+            }
+            if(magicNumber == 19 && rotating == true)
+            {
+               wheel.setText("19");
+               title.setText("Loser");
+               rotating = false;
+               magicNumber = 20;
+            }
+            if(magicNumber == 20 && rotating == true)
+            {
+               wheel.setText("20");
+               title.setText("Winner");
+               rotating = false;
+               magicNumber = 21;
+            }
+            if(magicNumber == 21 && rotating == true)
+            {
+               wheel.setText("21");
+               title.setText("Loser");
+               rotating = false;
+               magicNumber = 22;
+            }
+            if(magicNumber == 22 && rotating == true)
+            {
+               wheel.setText("22");
+               title.setText("Winner");
+               rotating = false;
+               magicNumber = 23;
+            }
+            if(magicNumber == 23 && rotating == true)
+            {
+               wheel.setText("23");
+               title.setText("Loser");
+               rotating = false;
+               magicNumber = 24;
+            }
+            if(magicNumber == 24 && rotating == true)
+            {
+               wheel.setText("24");
+               title.setText("Winner");
+               rotating = false;
+               magicNumber = 25;
+            }
+            if(magicNumber == 25 && rotating == true)
+            {
+               wheel.setText("25");
+               title.setText("Loser");
+               rotating = false;
+               magicNumber = 26;
+            }
+            if(magicNumber == 26 && rotating == true)
+            {
+               wheel.setText("26");
+               title.setText("Winner");
+               rotating = false;
+               magicNumber = 27;
+            }
+            if(magicNumber == 27 && rotating == true)
+            {
+               wheel.setText("27");
+               title.setText("Loser");
+               rotating = false;
+               magicNumber = 28;
+            }
+            if(magicNumber == 28 && rotating == true)
+            {
+               wheel.setText("28");
+               title.setText("Winner");
+               rotating = false;
+               magicNumber = 29;
+            }
+            if(magicNumber == 29 && rotating == true)
+            {
+               wheel.setText("29");
+               title.setText("Loser");
+               rotating = false;
+               magicNumber = 30;
+            }
+            if(magicNumber == 30 && rotating == true)
+            {
+               wheel.setText("30");
+               title.setText("Winner");
+               rotating = false;
+               magicNumber = 31;
+            }
+            if(magicNumber == 31 && rotating == true)
+            {
+               wheel.setText("31");
+               title.setText("Loser");
+               rotating = false;
+               magicNumber = 32;
+            }
+            if(magicNumber == 32 && rotating == true)
+            {
+               wheel.setText("32");
+               rotating = false;
+               title.setText("Winner");
+               magicNumber = 33;
+            }
+            if(magicNumber == 33 && rotating == true)
+            {
+               wheel.setText("33");
+               title.setText("Loser");
+               rotating = false;
+               magicNumber = 34;
+            }
+            if(magicNumber == 34 && rotating == true)
+            {
+               wheel.setText("34");
+               title.setText("Winner");
+               rotating = false;
+               magicNumber = 35;
+            }
+            if(magicNumber == 35 && rotating == true)
+            {
+               wheel.setText("35");
+               title.setText("Loser");
+               rotating = false;
+               magicNumber = 36;
+            }
+            if(magicNumber == 36 && rotating == true)
+            {
+               wheel.setText("36");
+               title.setText("Winner");
+               rotating = false;
+               magicNumber = 1;
+            }
+            rotating = true;
+            time++;
+        }
+
 
         //draws everything
         // first row of bets
@@ -667,16 +983,216 @@ void game1(bool &s, int &credit)
         windowGame.draw(gameCredit);
         windowGame.display();
 
-    
+        
         if (selectNumber == true && spinWheel == true)
         {
-            if (magicNumber == number)
-            { 
+            if(switch1 == true && magicNumber == 1)
+            {
+                multipier += 35;
                 win = true;
+            }
+            if(switch2 == true && magicNumber == 2)
+            {
+                multipier += 35;
+                win = true;
+            }
+            if(switch3 == true && magicNumber == 3)
+            {
+                multipier += 35;
+                win = true;
+            }
+            if(switch4 == true && magicNumber == 4)
+            {
+                multipier += 35;
+                win = true;
+            }
+            if(switch5 == true && magicNumber == 5)
+            {
+                multipier += 35;
+                win = true;
+            }
+            if(switch6 == true && magicNumber == 6)
+            {
+                multipier += 35;
+                win = true;
+            }
+            if(switch7 == true && magicNumber == 7)
+            {
+                multipier += 35;
+                win = true;
+            }
+            if(switch8 == true && magicNumber == 8)
+            {
+                multipier += 35;
+                win = true;
+            }
+            if(switch9 == true && magicNumber == 9)
+            {
+                multipier += 35;
+                win = true;
+            }
+            if(switch10 == true && magicNumber == 10)
+            {// oneTime = false;               // switch to update credit 1 time per game
+            }
+            if(switch14 == true && magicNumber == 14)
+            {
+                multipier += 35;
+                win = true;
+            }
+            if(switch15 == true && magicNumber == 15)
+            {
+                multipier += 35;
+                win = true;
+            }
+            if(switch16 == true && magicNumber == 16)
+            {
+                multipier += 35;
+                win = true;
+            }
+            if(switch17 == true && magicNumber == 17)
+            {
+                multipier += 35;
+                win = true;
+            }
+            if(switch18 == true && magicNumber == 18)
+            {
+                multipier += 35;
+                win = true;
+            }
+            if(switch19 == true && magicNumber == 19)
+            {
+                multipier += 35;
+                win = true;
+            }
+            if(switch20 == true && magicNumber == 20)
+            {
+                multipier += 35;
+                win = true;
+            }
+            if(switch21 == true && magicNumber == 21)
+            {
+                multipier += 35;
+                win = true;
+            }
+            if(switch22 == true && magicNumber == 22)
+            {
+                multipier += 35;
+                win = true;
+            }
+            if(switch23 == true && magicNumber == 23)
+            {
+                multipier += 35;
+                win = true;
+            }
+            if(switch24 == true && magicNumber == 24)
+            {
+                multipier += 35;
+                win = true;
+            }
+            if(switch25 == true && magicNumber == 25)
+            {
+                multipier += 35;
+                win = true;
+            }
+            if(switch26 == true && magicNumber == 26)
+            {
+                multipier += 35;
+                win = true;
+            }
+            if(switch27 == true && magicNumber == 27)
+            {
+                multipier += 35;
+                win = true;
+            }
+            if(switch28 == true && magicNumber == 28)
+            {
+                multipier += 35;
+                win = true;
+            }
+            if(switch29 == true && magicNumber == 29)
+            {
+                multipier += 35;
+                win = true;
+            }
+            if(switch30 == true && magicNumber == 30)
+            {
+                multipier += 35;
+                win = true;
+            }
+            if(switch31 == true && magicNumber == 31)
+            {
+                multipier += 35;
+                win = true;
+            }
+            if(switch32 == true && magicNumber == 32)
+            {
+                multipier += 35;
+                win = true;
+            }
+            if(switch33 == true && magicNumber == 33)
+            {
+                multipier += 35;
+                win = true;
+            }
+            if(switch34 == true && magicNumber == 34)
+            {
+                multipier += 35;
+                win = true;
+            }
+            if(switch35 == true && magicNumber == 35)
+            {
+                multipier += 35;
+                win = true;
+            }
+            if(switch36 == true && magicNumber == 36)
+            {
+                multipier += 35;
+                win = true;
+            }
+            if(switchEven == true && magicNumber % 2 == 0)
+            {
+                multipier += 2;
+                win = true;
+            }
+            if(switchOdd == true && magicNumber % 2 != 0)
+            {
+                multipier += 2;
+                win = true;
+            }
+            if(switchRed == true && magicNumber == 1 || magicNumber == 3 || magicNumber == 5 || magicNumber == 7 
+               || magicNumber == 9 || magicNumber == 12 || magicNumber == 14 || magicNumber == 16 || magicNumber == 18 
+               || magicNumber == 19 || magicNumber == 21 || magicNumber == 23 || magicNumber == 25 || magicNumber == 27 
+               || magicNumber == 30 || magicNumber == 32 || magicNumber == 34 || magicNumber == 36)
+            {
+                multipier += 2;
+                win = true;
+            }
+            if(switchBlack == true && (magicNumber == 2 || magicNumber == 4 || magicNumber == 6 || magicNumber == 8 
+               || magicNumber == 10 || magicNumber == 11 || magicNumber == 13 || magicNumber == 15 || magicNumber == 17 
+               || magicNumber == 20 || magicNumber == 22 || magicNumber == 24 || magicNumber == 26 || magicNumber == 28 
+               || magicNumber == 29 || magicNumber == 31 || magicNumber == 33 || magicNumber == 35))
+            {
+                multipier += 2;
+                win = true;
+            }
+            if(switch1to18 == true && magicNumber <= 18)
+            {
+                multipier += 2;
+                win = true;
+            }
+            if(switch19to36 == true && magicNumber >= 19)
+            {
+                multipier += 2;
+                win = true;
+            }
+           
+            
+            if (win == true)
+            { 
                 winDisplay = true;
                 if(oneTime == true)
                 {
-                    credit = credit + 4000;
+                    credit = credit + (10*multipier);
                     oneTime = false;
                 }
             }
@@ -686,7 +1202,7 @@ void game1(bool &s, int &credit)
                 loseDisplay = true;
                 if(oneTime == true)
                 {
-                    credit = credit - 10;
+                    credit = credit - (10*bet);
                     oneTime = false;
                 }
             }
@@ -697,7 +1213,7 @@ void game1(bool &s, int &credit)
                 std::string s = std::to_string(magicNumber);
                // stay.setText(s); //displays the hidden number
             
-                title.setText("Winner");
+                title.setText("WINNER");
 
 
             }
@@ -707,7 +1223,7 @@ void game1(bool &s, int &credit)
             {
                 std::string s = std::to_string(magicNumber);
                 
-                title.setText("TRY AGAIN SUCKER");
+                title.setText(" LOSER ");
             }
 
             // display credit
@@ -719,7 +1235,6 @@ void game1(bool &s, int &credit)
                 winDisplay = false;
                 loseDisplay = false;
                 restart = false;
-                magicNumber = -1;
                 spinWheel = false;
 
                 // reset betting screen buttons
@@ -765,8 +1280,8 @@ void game1(bool &s, int &credit)
                 black.setColorTextNormal(sf::Color::White);
                 first18.setColorTextNormal(sf::Color::White);
                 second18.setColorTextNormal(sf::Color::White);
-                spin.setColorTextNormal(sf::Color::White);
-                newGame.setColorTextNormal(sf::Color::White);
+                spin.setColorTextNormal(sf::Color::Green);
+                newGame.setColorTextNormal(sf::Color::Black);
 
                 // reset switches
                 switch1 = false;
@@ -810,7 +1325,40 @@ void game1(bool &s, int &credit)
                 switchRed = false;
                 switchBlack = false;
                 switch1to18 = false;
-                switch19to36 = false;
+                switch19to36 = false;   
+                rotating = true;      
+                time = 0;
+                time2 = (rand() % 36) + 2000;
+                win = false;
+                multipier = 0;
+                lose = false;
+                oneTime = false;
+                loseDisplay = false;
+                winDisplay = false;
+                lose = false;
+                bet = 0;
+                magicNumber = 1;  
+                number = -1;
+
+
+
+       selectNumber = false;          // switch for  selecting a number
+       menu = false;                  // switch for menu
+       loseDisplay = false;           // switch for lose display
+       winDisplay = false;            // switch for win display
+       spinWheel = false;             // switch to spin wheel
+       blackSwitch = false;           // switch for black
+       redSwitch = false;             // switch for red
+       evenSwitch = false;            // switch for even
+       oddSwitch = false;             // switch for odd
+       first18Switch = false;         // switch for first 18
+       second18Switch = false;        // switch for second 18
+
+
+    
+
+
+  
     
                
 
@@ -820,3 +1368,4 @@ void game1(bool &s, int &credit)
         }
     }
 }
+                
