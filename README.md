@@ -79,13 +79,13 @@ Each phase is a stand alone program of the main project.
 The completed project is a game interface with six application:
 
 
-## Game 1:Roulette
+## Game 1: Roulette
 
 Pick a number and spin the wheel. Matching number with dealer gives a 35 to 1 payout.
 Spin is activated when the spin button is pushed.
 
 
-## Game 2:Rock Paper Sicssors
+## Game 2: Rock Paper Sicssors
 
 Pick either rock, paper or sicssor character. 
 
@@ -98,14 +98,14 @@ paper = 2
 sicssor = 3
 
 
-## Game 3:Keno
+## Game 3: Keno
 
 Pick a 1-10 number card, match card with the dealer
 
 2:1 payout
 
 
-## Game 4:Black Jack
+## Game 4: Black Jack
 
 game board built, waiting for logic
 
