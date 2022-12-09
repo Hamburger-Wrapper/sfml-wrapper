@@ -1,8 +1,15 @@
+/**
+ * @file   game4.cpp
+ * @author Brent Knoppp
+ * @brief  game of keno
+ * @date   11/06/2022
+ *
+ */
 #include "../../include/blackjack.h"
 
 void game4(bool &s, int &credit)
 {
-    // game 1
+    // game switches
     bool selectNumber = false;  // switch for  selecting a number 
     bool win = false;           // switch for win 
     bool lose = false;          // switch for lose
@@ -13,7 +20,6 @@ void game4(bool &s, int &credit)
     bool oneTime = false;       // switch to update credit 1 time per game
     int number = -1;            // users number
     int magicNumber = -1;       // random number of game
-
     // convert credit for displaying to game screen
     std::string cash;
     std::stringstream ss;
@@ -79,17 +85,17 @@ void game4(bool &s, int &credit)
     Button dealerTwelve("?", {750, 325}, {80, 100}, sf::Color::White);
     dealerTwelve.setColorTextNormal(sf::Color::Red);
 
+    // game title
     Button title("Blackjack", {413, 75}, {700, 100}, sf::Color::Blue);
-
     // players directions
     Button hit("hit", {475, 513}, {150, 75}, sf::Color::White);
     hit.setColorTextNormal(sf::Color::Black);
     Button stay("stay", {325, 513}, {150, 75}, sf::Color::White);
     stay.setColorTextNormal(sf::Color::Black);
-
     // menu return button
     Button mainMenu("menu", {100,650}, {150, 50}, sf::Color::White);
     mainMenu.setColorTextNormal(sf::Color::Black);
+
     // game credits
     // total credits left
     Button gameCredit(cash, {100,475}, {150,50}, sf::Color::Blue);
@@ -114,28 +120,26 @@ void game4(bool &s, int &credit)
                 windowGame.close();
                 s = true;
             }
-
             // players directions
             hit.update(eventGame1, windowGame);
             stay.update(eventGame1, windowGame);
-
+            // restart game button
             if (newGame.update(eventGame1, windowGame))
             {
                 restart = true;
             }
-
+            // quit game button
             if (quit.update(eventGame1, windowGame))
             {
                 windowGame.close();
                 s = true;
             }
-
             // back to main menu, change game
             if (mainMenu.update(eventGame1, windowGame))
             {
                 windowGame.close();
             }
-
+            // player one
             if (selectNumber == false)
             {
                 if (playerOne.update(eventGame1, windowGame))
@@ -357,7 +361,7 @@ void game4(bool &s, int &credit)
                 }
             }   
         }
-
+        // display game
         windowGame.clear();
         windowGame.draw(playerOne);
         windowGame.draw(playerTwo);
@@ -385,8 +389,6 @@ void game4(bool &s, int &credit)
         windowGame.draw(dealerTwelve);
         windowGame.draw(dealerLabel);
         windowGame.draw(playerLabel);
-
-
         windowGame.draw(title);
         windowGame.draw(hit);
         windowGame.draw(stay);
@@ -395,9 +397,10 @@ void game4(bool &s, int &credit)
         windowGame.draw(mainMenu);
         windowGame.draw(gameCredit);
         windowGame.display();
-
+        // handles winning and losing
         if (selectNumber == true)
         {
+            // won game
             if (magicNumber == number)
             { 
                 win = true;
@@ -408,6 +411,7 @@ void game4(bool &s, int &credit)
                     oneTime = false;
                 }
             }
+            // lose game
             else
             {
                 lose = true;
@@ -418,7 +422,6 @@ void game4(bool &s, int &credit)
                     oneTime = false;
                 }
             }
-
             // display winning pick
             if (winDisplay == true)
             {
@@ -428,7 +431,6 @@ void game4(bool &s, int &credit)
                 title.setText("YOU WIN, GET PAID");
 
             }
-
             // display losing pick
             if (loseDisplay == true)
             {
@@ -436,10 +438,9 @@ void game4(bool &s, int &credit)
                 stay.setText(s);
                 title.setText("TRY AGAIN SUCKER");
             }
-
             // display credit
             gameCredit.setText(std::to_string(credit));
-
+            // restart game conditions
             if (restart == true)
             {
                 selectNumber = false;
@@ -474,7 +475,7 @@ void game4(bool &s, int &credit)
                 dealerTen.setColorTextNormal(sf::Color::Green);
                 dealerEleven.setColorTextNormal(sf::Color::Green);
                 dealerTwelve.setColorTextNormal(sf::Color::Green);
-
+                // game header
                 newGame.setColorTextNormal(sf::Color::White);
                 title.setText("Guess my number 1 to 10");
                 stay.setText("?");

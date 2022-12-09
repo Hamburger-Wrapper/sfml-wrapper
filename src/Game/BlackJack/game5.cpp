@@ -1,8 +1,8 @@
 /**
- * @file   main.cpp
+ * @file   game5.cpp
  * @author Brent Knoppp
  * @brief  game of keno
- * @date   11/01/2022
+ * @date   11/06/2022
  *
  */
 #include "../../include/roulette.h"
@@ -70,7 +70,7 @@ void game5(bool &s, int &credit)
             }
             // number is picked
             pickNumber.update(eventGame1, windowGame);
-
+            // restart game
             if (newGame.update(eventGame1, windowGame))
             {
                 restart = true;
@@ -169,8 +169,7 @@ void game5(bool &s, int &credit)
                     nine.setColorTextNormal(sf::Color::Red);
                     srand(time(nullptr));
                     magicNumber = rand() % 10 + 1; //makes random number
-                    oneTime = true;
-                    
+                    oneTime = true;    
                 }
                 if (ten.update(eventGame1, windowGame))
                 {

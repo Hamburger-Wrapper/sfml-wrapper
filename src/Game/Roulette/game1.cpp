@@ -1,3 +1,10 @@
+/**
+ * @file   game1.cpp
+ * @author Brent Knoppp
+ * @brief  Roulette game
+ * @date   11/06/2022
+ *
+ */
 #include "../../include/roulette.h"
 
 void game1(bool &s, int &credit)
@@ -10,13 +17,13 @@ void game1(bool &s, int &credit)
     bool menu = false;                  // switch for menu
     bool loseDisplay = false;           // switch for lose display
     bool winDisplay = false;            // switch for win display
-    bool oneTime = true;               // switch to update credit 1 time per game
+    bool oneTime = true;                // switch to update credit 1 time per game
     bool spinWheel = false;             // switch to spin wheel
 
-
-    int number = -1;                     // users number
+    // game play variables
+    int number = -1;                    // users number
     int magicNumber = 1;                // random number of game
-    bool rotating = false;               // switch for wheel rotation
+    bool rotating = false;              // switch for wheel rotation
     int time = 0;                       // time for wheel rotation
     int time2 = 2000 + rand() % 36;     // random time for wheel to stop
     int multipier = 0;                  // multiplier for win
@@ -67,8 +74,6 @@ void game1(bool &s, int &credit)
          switch1to18 = false,
          switch19to36 = false;
 
-
-
     // convert credit for credit displaying to game screen
     std::string cash;
     std::stringstream ss;
@@ -92,7 +97,6 @@ void game1(bool &s, int &credit)
     Button spin("spin", {100, 300}, {150, 50}, sf::Color::White);
     spin.setColorTextNormal(sf::Color::White);
     spin.setColorTextHover(sf::Color::Red);
-
 
     // starting positions and metric's for betting buttons
     float xStartnumber = 225;
@@ -178,7 +182,7 @@ void game1(bool &s, int &credit)
     twentyfour.setColorTextNormal(sf::Color::White);
     twentyfour.setColorTextHover(sf::Color::Red);
 
-    // third row of numbers
+    // third row of numbers betting numbers
     Button twentyfive("25", {xStartnumber, yStartnumber+yNumberOffset*2}, {widthNumber, heightNumber}, sf::Color::Green);
     twentyfive.setColorTextNormal(sf::Color::White);
     twentyfive.setColorTextHover(sf::Color::Red);
@@ -216,7 +220,7 @@ void game1(bool &s, int &credit)
     thirtysix.setColorTextNormal(sf::Color::White);
     thirtysix.setColorTextHover(sf::Color::Red);
 
-    // fourth row of numbers
+    // fourth row of betting numbers
     Button even("Even", {xStartnumber+25, yStartnumber+yNumberOffset*3}, {2*widthNumber, heightNumber}, sf::Color::Green);
     even.setColorTextNormal(sf::Color::White);
     even.setColorTextHover(sf::Color::Red);
@@ -271,35 +275,30 @@ void game1(bool &s, int &credit)
                 windowGame.close();
                 s = true;
             }
-
             // starts a new game button, resets all switches
             if (newGame.update(eventGame1, windowGame))
             {
                 restart = true;
             }
-
             // quit game button
             if (quit.update(eventGame1, windowGame))
             {
                 windowGame.close();
                 s = true;
             }
-
+            // spin wheel button
             if (spin.update(eventGame1, windowGame))
             {
                 spinWheel = true;
                 rotating = true;
                 newGame.setColorTextNormal(sf::Color::Red);
                 spin.setColorTextNormal(sf::Color::Red);
-
             }
-
             // back to main menu, change game
             if (mainMenu.update(eventGame1, windowGame))
             {
                 windowGame.close();
             }
-
             // no game being played set bets, each button pushed sets a switch
             if (spinWheel == false)
             {
@@ -312,6 +311,7 @@ void game1(bool &s, int &credit)
                     oneTime = true;
                     bet++;
                 }
+                // bet 2 selected
                 if (two.update(eventGame1, windowGame))
                 {
                     switch2 = true;
@@ -320,6 +320,7 @@ void game1(bool &s, int &credit)
                     oneTime = true;
                     bet++;
                 }
+                // bet 3 selected
                 if (three.update(eventGame1, windowGame))
                 {
                     switch3 = true;
@@ -328,6 +329,7 @@ void game1(bool &s, int &credit)
                     oneTime = true;
                     bet++;
                 }
+                // bet 4 selected
                 if (four.update(eventGame1, windowGame))
                 {
                     switch4 = true;
@@ -337,6 +339,7 @@ void game1(bool &s, int &credit)
                     bet++;
                    
                 }
+                // bet 5 selected
                 if (five.update(eventGame1, windowGame))
                 {
                     switch5 = true;
@@ -345,6 +348,7 @@ void game1(bool &s, int &credit)
                     oneTime = true;
                     bet++;
                 }
+                // bet 6 selected
                 if (six.update(eventGame1, windowGame))
                 {
                     switch6 = true;
@@ -353,6 +357,7 @@ void game1(bool &s, int &credit)
                     oneTime = true;
                     bet++;
                 }
+                // bet 7 selected
                 if (seven.update(eventGame1, windowGame))
                 {
                     switch7 = true;
@@ -361,6 +366,7 @@ void game1(bool &s, int &credit)
                     oneTime = true;
                     bet++;
                 }
+                // bet 8 selected
                 if (eight.update(eventGame1, windowGame))
                 {
                     switch8 = true;
@@ -369,6 +375,7 @@ void game1(bool &s, int &credit)
                     oneTime = true;
                     bet++;
                 }
+                // bet 9 selected
                 if (nine.update(eventGame1, windowGame))
                 {
                     switch9 = true;
@@ -378,6 +385,7 @@ void game1(bool &s, int &credit)
                     bet++;
                     
                 }
+                // bet 10 selected
                 if (ten.update(eventGame1, windowGame))
                 {
                     switch10 = true;
@@ -386,6 +394,7 @@ void game1(bool &s, int &credit)
                     oneTime = true;
                     bet++;
                 }
+                // bet 11 selected
                 if (eleven.update(eventGame1, windowGame))
                 {
                     switch11 = true;
@@ -394,6 +403,7 @@ void game1(bool &s, int &credit)
                     oneTime = true;
                     bet++;
                 }
+                // bet 12 selected
                 if (twelve.update(eventGame1, windowGame))
                 {
                     switch12 = true;
@@ -402,6 +412,7 @@ void game1(bool &s, int &credit)
                     oneTime = true;
                     bet++;
                 }
+                // bet 13 selected
                 if (thirteen.update(eventGame1, windowGame))
                 {
                     switch13 = true;
@@ -410,6 +421,7 @@ void game1(bool &s, int &credit)
                     oneTime = true;
                     bet++;
                 }
+                // bet 14 selected
                 if (fourteen.update(eventGame1, windowGame))
                 {
                     switch14 = true;
@@ -418,6 +430,7 @@ void game1(bool &s, int &credit)
                     oneTime = true;
                     bet++;
                 }
+                // bet 15 selected
                 if (fifteen.update(eventGame1, windowGame))
                 {
                     switch15 = true;
@@ -426,6 +439,7 @@ void game1(bool &s, int &credit)
                     oneTime = true;
                     bet++;
                 }
+                // bet 16 selected
                 if (sixteen.update(eventGame1, windowGame))
                 {
                     switch16 = true;
@@ -434,6 +448,7 @@ void game1(bool &s, int &credit)
                     oneTime = true;
                     bet++;
                 }
+                // bet 17 selected
                 if (seventeen.update(eventGame1, windowGame))
                 {
                     switch17 = true;
@@ -442,6 +457,7 @@ void game1(bool &s, int &credit)
                     oneTime = true;
                     bet++;
                 }
+                // bet 18 selected
                 if (eighteen.update(eventGame1, windowGame))
                 {
                     switch18 = true;
@@ -450,6 +466,7 @@ void game1(bool &s, int &credit)
                     oneTime = true;
                     bet++;
                 }
+                // bet 19 selected
                 if (nineteen.update(eventGame1, windowGame))
                 {
                     switch19 = true;
@@ -458,6 +475,7 @@ void game1(bool &s, int &credit)
                     oneTime = true;
                     bet++;
                 }
+                // bet 20 selected
                 if (twenty.update(eventGame1, windowGame))
                 {
                     switch20 = true;
@@ -466,6 +484,7 @@ void game1(bool &s, int &credit)
                     oneTime = true;
                     bet++;
                 }
+                // bet 21 selected
                 if (twentyone.update(eventGame1, windowGame))
                 {
                     switch21 = true;
@@ -474,6 +493,7 @@ void game1(bool &s, int &credit)
                     oneTime = true;
                     bet++;
                 }
+                // bet 22 selected
                 if (twentytwo.update(eventGame1, windowGame))
                 {
                     switch22 = true;
@@ -482,6 +502,7 @@ void game1(bool &s, int &credit)
                     oneTime = true;
                     bet++;
                 }
+                // bet 23 selected
                 if (twentythree.update(eventGame1, windowGame))
                 {
                     switch23 = true;
@@ -490,6 +511,7 @@ void game1(bool &s, int &credit)
                     oneTime = true;
                     bet++;
                 }
+                // bet 24 selected
                 if (twentyfour.update(eventGame1, windowGame))
                 {
                     switch24 = true;
@@ -498,6 +520,7 @@ void game1(bool &s, int &credit)
                     oneTime = true;
                     bet++;
                 }
+                // bet 25 selected
                 if (twentyfive.update(eventGame1, windowGame))
                 {
                     switch25 = true;
@@ -506,6 +529,7 @@ void game1(bool &s, int &credit)
                     oneTime = true;
                     bet++;
                 }
+                // bet 26 selected
                 if (twentysix.update(eventGame1, windowGame))
                 {
                     switch26 = true;
@@ -514,6 +538,7 @@ void game1(bool &s, int &credit)
                     oneTime = true;
                     bet++;
                 }
+                // bet 27 selected
                 if (twentyseven.update(eventGame1, windowGame))
                 {
                     switch27 = true;
@@ -522,6 +547,7 @@ void game1(bool &s, int &credit)
                     oneTime = true;
                     bet++;
                 }
+                // bet 28 selected
                 if (twentyeight.update(eventGame1, windowGame))
                 {
                     switch28 = true;
@@ -530,6 +556,7 @@ void game1(bool &s, int &credit)
                     oneTime = true;
                     bet++;
                 }
+                // bet 29 selected
                 if (twentynine.update(eventGame1, windowGame))
                 {
                     switch29 = true;
@@ -538,6 +565,7 @@ void game1(bool &s, int &credit)
                     oneTime = true;
                     bet++;
                 }
+                // bet 30 selected
                 if (thirty.update(eventGame1, windowGame))
                 {
                     switch30 = true;
@@ -546,6 +574,7 @@ void game1(bool &s, int &credit)
                     oneTime = true;
                     bet++;
                 }
+                // bet 31 selected
                 if (thirtyone.update(eventGame1, windowGame))
                 {
                     switch31 = true;
@@ -554,6 +583,7 @@ void game1(bool &s, int &credit)
                     oneTime = true;
                     bet++;
                 }
+                // bet 32 selected
                 if (thirtytwo.update(eventGame1, windowGame))
                 {
                     switch32 = true;
@@ -562,6 +592,7 @@ void game1(bool &s, int &credit)
                     oneTime = true;
                     bet++;
                 }
+                // bet 33 selected
                 if (thirtythree.update(eventGame1, windowGame))
                 {
                     switch33 = true;
@@ -570,6 +601,7 @@ void game1(bool &s, int &credit)
                     oneTime = true;
                     bet++;
                 }
+                // bet 34 selected
                 if (thirtyfour.update(eventGame1, windowGame))
                 {
                     switch34 = true;
@@ -578,6 +610,7 @@ void game1(bool &s, int &credit)
                     oneTime = true;
                     bet++;
                 }
+                // bet 35 selected
                 if (thirtyfive.update(eventGame1, windowGame))
                 {
                     switch35 = true;
@@ -586,6 +619,7 @@ void game1(bool &s, int &credit)
                     oneTime = true;
                     bet++;
                 }
+                // bet 36 selected
                 if (thirtysix.update(eventGame1, windowGame))
                 {
                     switch36 = true;
@@ -594,6 +628,7 @@ void game1(bool &s, int &credit)
                     oneTime = true;
                     bet++;
                 }
+                // even bet
                 if (even.update(eventGame1, windowGame))
                 {
                     switchEven = true;
@@ -602,6 +637,7 @@ void game1(bool &s, int &credit)
                     oneTime = true;
                     bet++;
                 }
+                // odd bet
                 if (odd.update(eventGame1, windowGame))
                 {
                     switchOdd = true;
@@ -610,6 +646,7 @@ void game1(bool &s, int &credit)
                     oneTime = true;
                     bet++;
                 }
+                // red bet
                 if (red.update(eventGame1, windowGame))
                 {
                     switchRed = true;
@@ -618,6 +655,7 @@ void game1(bool &s, int &credit)
                     oneTime = true;
                     bet++;
                 }
+                // black bet
                 if (black.update(eventGame1, windowGame))
                 {
                     switchBlack = true;
@@ -626,6 +664,7 @@ void game1(bool &s, int &credit)
                     oneTime = true;
                     bet++;
                 }
+                // first 18 bet
                 if (first18.update(eventGame1, windowGame))
                 {
                     switch1to18 = true;
@@ -634,6 +673,7 @@ void game1(bool &s, int &credit)
                     oneTime = true;
                     bet++;
                 }
+                // second 18 bet
                 if (second18.update(eventGame1, windowGame))
                 {
                     switch19to36 = true;
@@ -645,12 +685,11 @@ void game1(bool &s, int &credit)
             }   
         }
 
-
-        
-
-        // wheel
+        // wheel is activated
         if(spinWheel == true && time <= time2)
-        {   if(magicNumber == 1 && rotating == true)
+        {   
+            // wheel is spinning and rotating
+            if(magicNumber == 1 && rotating == true)
             {
                wheel.setText("1 ");
                rotating = false;
@@ -905,7 +944,7 @@ void game1(bool &s, int &credit)
             rotating = true;
             time++;
         }
-
+        // timer
         if(time == time2)
         {
             numberDeterminedBySpin = true;
@@ -959,16 +998,13 @@ void game1(bool &s, int &credit)
         windowGame.draw(black);
         windowGame.draw(first18);
         windowGame.draw(second18);
-
         // game wheel
         windowGame.draw(wheel);
         // player and dealer tags
         windowGame.draw(dealerLabel);
         windowGame.draw(playerLabel);
-
         // header/tittle
         windowGame.draw(title);
-    
         // user buttons
         windowGame.draw(quit);
         windowGame.draw(newGame);
@@ -977,10 +1013,10 @@ void game1(bool &s, int &credit)
         windowGame.draw(gameCredit);
         windowGame.display();
 
-        
+        // payout logic
         if (numberDeterminedBySpin == true)
         {
-            
+            // compares winning numbers and bets
             if(switch1 == true && magicNumber == 1)
             {
                 multipier += 35;
@@ -1228,8 +1264,7 @@ void game1(bool &s, int &credit)
             }
             
         } 
-        
-            
+            // winning number
             if (win == true)
             { 
                 winDisplay = true;
@@ -1239,6 +1274,7 @@ void game1(bool &s, int &credit)
                     oneTime = false;
                 }
             }
+            // losing number
             if(lose == true)
             {
                 loseDisplay = true;
@@ -1248,18 +1284,12 @@ void game1(bool &s, int &credit)
                     oneTime = false;
                 }
             }
-
             // display winning pick
             if (winDisplay == true)
             {
                 std::string s = std::to_string(magicNumber);
-               
-            
                 title.setText("WINNER");
-
-
             }
-
             // display losing pick
             if (loseDisplay == true)
             {
@@ -1267,13 +1297,11 @@ void game1(bool &s, int &credit)
                 
                 title.setText(" LOSER ");
             }
-
             // display credit
             gameCredit.setText(std::to_string(credit));
-
+            // resets game
             if (restart == true)
             {
-
                 // reset betting screen buttons
                 one.setColorTextNormal(sf::Color::White);
                 two.setColorTextNormal(sf::Color::White);
@@ -1380,10 +1408,8 @@ void game1(bool &s, int &credit)
                 bet = 0;
                 magicNumber = 1;  
                 number = -1;
-                numberDeterminedBySpin = false;
-                
-            }
-        
+                numberDeterminedBySpin = false; 
+            }   
     }
 }
                 

@@ -1,8 +1,15 @@
+/**
+ * @file   game2.cpp
+ * @author Brent Knoppp
+ * @brief  game of Rock Paper Scissors
+ * @date   11/06/2022
+ *
+ */
 #include "../../include/rps.h"
 
 void game2(bool &s, int &credit)
 {
-    // game 2
+    // game switches
     bool selectNumber = false;
     bool restart = false;
     int bot = 0;
@@ -41,24 +48,23 @@ void game2(bool &s, int &credit)
                 windowGame.close();
                 s = true;
             }
-
+            // restart game
             if (newGame.update(eventGame1, windowGame))
             {
                 restart = true;
             }
-
+            // quit game
             if (quit.update(eventGame1, windowGame))
             {
                 windowGame.close();
                 s = true;
             }
-
             // back to main menu, change game
             if (mainMenu.update(eventGame1, windowGame))
             {
                 windowGame.close();
             }
-
+            // select pick
             if (selectNumber == false)
             {
                 if (one.update(eventGame1, windowGame))
@@ -85,6 +91,7 @@ void game2(bool &s, int &credit)
             }
         }
 
+        //display game
         windowGame.clear();
         windowGame.draw(one);
         windowGame.draw(two);
@@ -133,12 +140,16 @@ void game2(bool &s, int &credit)
     }
 }
 
+// botChoice function returns a random number between 1 and 3
+// used to generate the computer's pick
 int botChoice()
 {
     srand(static_cast<unsigned int>(time(nullptr)));
     return (rand() % 3) + 1; // random number between 1 and 3
 }
 
+// RPS function returns 1 if user wins, 0 if user loses, 2 if tie
+// user is the user's pick, computer is the computer's pick
 int RPS(int user, int computer)
 {
     if (user == computer)
