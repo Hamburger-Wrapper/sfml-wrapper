@@ -86,12 +86,12 @@ style="display: block;
         width: 50%;"
 title="game interface ">
 
-Game 1:Roulette
+## Game 1:Roulette
 
 Pick a number an spin the wheel. Matching number gives a 35 to 1 payout.
 Spin is activated when the spin button is pushed
 
-Game 2:Rock Paper Sicssors
+## Game 2:Rock Paper Sicssors
 
 Pick either rock, paper or sicssor. play head to head with the dealer
 rock beats sicssor, sicssor beats paper and paper beats rock
@@ -100,18 +100,21 @@ rock = 1
 paper = 2
 sicssor = 3
 
-Game 3:Keno
+## Game 3:Keno
 
 Pick 1-10 number card, match card with the dealer
 2:1 payout
 
-Game 4:Black Jack
+## Game 4:Black Jack
+
 game under construction
 
-Game 5: Slot Machine
+## Game 5: Slot Machine
+
 game under construction
 
-game 6: 3D Engine
+## game 6: 3D Engine
+
 game under construction
 
 
