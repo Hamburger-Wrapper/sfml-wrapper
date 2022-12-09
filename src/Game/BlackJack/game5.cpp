@@ -1,8 +1,15 @@
+/**
+ * @file   main.cpp
+ * @author Brent Knoppp
+ * @brief  game of keno
+ * @date   11/01/2022
+ *
+ */
 #include "../../include/roulette.h"
 
 void game5(bool &s, int &credit)
 {
-    // game 1
+    // game switches for control
     bool selectNumber = false;  // switch for  selecting a number 
     bool win = false;           // switch for win 
     bool lose = false;          // switch for lose
@@ -45,10 +52,9 @@ void game5(bool &s, int &credit)
     Button mainMenu("menu", {725, 550}, {100, 60}, sf::Color::White);
     mainMenu.setColorTextNormal(sf::Color::Black);
     // game credits
-    // total credits left
     Button gameCredit(cash, {100,550}, {150,50}, sf::Color::Blue);
     gameCredit.setColorTextNormal(sf::Color::Black);
-    
+
     // run the program as long as the window is open
     while (windowGame.isOpen())
     {
@@ -62,28 +68,28 @@ void game5(bool &s, int &credit)
                 windowGame.close();
                 s = true;
             }
-
+            // number is picked
             pickNumber.update(eventGame1, windowGame);
 
             if (newGame.update(eventGame1, windowGame))
             {
                 restart = true;
             }
-
+            // quit game
             if (quit.update(eventGame1, windowGame))
             {
                 windowGame.close();
                 s = true;
             }
-
             // back to main menu, change game
             if (mainMenu.update(eventGame1, windowGame))
             {
                 windowGame.close();
             }
-
+            // select number to play game
             if (selectNumber == false)
             {
+                // number 1 to 10
                 if (one.update(eventGame1, windowGame))
                 {
                     number = 1;
@@ -177,7 +183,7 @@ void game5(bool &s, int &credit)
                 }
             }
         }
-
+        // draw images
         windowGame.clear();
         windowGame.draw(one);
         windowGame.draw(two);
@@ -196,9 +202,10 @@ void game5(bool &s, int &credit)
         windowGame.draw(mainMenu);
         windowGame.draw(gameCredit);
         windowGame.display();
-
+        // number is selected
         if (selectNumber == true)
         {
+            // won game
             if (magicNumber == number)
             { 
                 win = true;
@@ -209,6 +216,7 @@ void game5(bool &s, int &credit)
                     oneTime = false;
                 }
             }
+            // lose game
             else
             {
                 lose = true;
@@ -219,7 +227,6 @@ void game5(bool &s, int &credit)
                     oneTime = false;
                 }
             }
-
             // display winning pick
             if (winDisplay == true)
             {
@@ -228,7 +235,6 @@ void game5(bool &s, int &credit)
                 title.setText("   YOU WIN, GET PAID ");
 
             }
-
             // display losing pick
             if (loseDisplay == true)
             {
@@ -236,10 +242,9 @@ void game5(bool &s, int &credit)
                 pickNumber.setText(s);
                 title.setText("    TRY AGAIN SUCKER  ");
             }
-
             // display credit
             gameCredit.setText(std::to_string(credit));
-
+            // restart game
             if (restart == true)
             {
                 selectNumber = false;

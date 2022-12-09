@@ -1,4 +1,11 @@
 
+/**
+ * @file   main.cpp
+ * @author Brent Knoppp
+ * @brief  main game menu interface
+ * @date   11/01/2022
+ *
+ */
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <string>
@@ -9,10 +16,6 @@
 #include "include/rps.h"
 #include "include/roulette.h"
 #include "include/blackjack.h"
-
-//#include "../headers/buttonCircle.h"
-
-
 
 int main()
 {   
@@ -28,15 +31,13 @@ int main()
          game6On = false,
          quit = false;
 
-
-
+    // user interface
     while(!quit)
     {
         sf::RenderWindow window(sf::VideoMode(900, 600), "main game menu");
         window.setVerticalSyncEnabled(true);
         // handle main game menu
         mainMenu(window, game1On, game2On, game3On, game4On, game5On, game6On, quit, credits);
-
         // game 1 Roulette
         if (game1On)
         {
@@ -53,19 +54,24 @@ int main()
         if (game3On)
         {
             window.close();
-            //game3(quit);
         }
-        // game 4 3D engine
+        // game 4 Black Jack
         if (game4On)
         {
             window.close();
             game4(quit, credits);
         }
+        // game 5 Keno
         if(game5On)
         {
             window.close();
             game5(quit, credits);
         }
+        // game 6 3D Engine
+        if(game6On)
+        {
+            window.close();
+        }   
         game1On = false;
         game2On = false;
         game3On = false;

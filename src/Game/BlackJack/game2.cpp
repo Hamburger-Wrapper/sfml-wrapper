@@ -11,7 +11,6 @@ void game2(bool &s, int &credit)
     sf::RenderWindow windowGame(sf::VideoMode(800, 600), "Game 2");
 
     // start button has no need
-
     Button quit("quit", {170, 210}, {200, 75}, sf::Color::Green);
     Button newGame("new game", {170, 310}, {200, 75}, sf::Color::Green);
     newGame.setColorTextNormal(sf::Color::White);
