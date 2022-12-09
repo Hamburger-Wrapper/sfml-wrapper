@@ -75,16 +75,8 @@ Each phase is a stand alone program of the main project.
 4. You may merge the Pull Request in once you have the sign-off of two other developers, or if you do not have permission to do that, you may request the second reviewer to merge it for you.
 
 ### Project OverView
-Scope of work changed 
-
 The completed project is a game interface with six application:
-<img src="./assets/images/inteface.jpg"
-alt="game interface"
-style="display: block;
-        margin-left: auto;
-        margin-right: auto;
-        width: 50%;"
-title="game interface ">
+
 
 ## Game 1:Roulette
 
@@ -97,7 +89,9 @@ Pick either rock, paper or sicssor. play head to head with the dealer
 rock beats sicssor, sicssor beats paper and paper beats rock
 
 rock = 1
+
 paper = 2
+
 sicssor = 3
 
 ## Game 3:Keno
