@@ -75,6 +75,7 @@ Each phase is a stand alone program of the main project.
 4. You may merge the Pull Request in once you have the sign-off of two other developers, or if you do not have permission to do that, you may request the second reviewer to merge it for you.
 
 ### Project OverView
+
 The completed project is a game interface with six application:
 
 
@@ -99,7 +100,8 @@ sicssor = 3
 
 ## Game 3:Keno
 
-Pick 1-10 number card, match card with the dealer
+Pick a 1-10 number card, match card with the dealer
+
 2:1 payout
 
 
